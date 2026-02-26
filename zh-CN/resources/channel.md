@@ -96,3 +96,17 @@
 | `guild_id` | string? | 群组 ID |
 
 创建一个私聊频道。返回一个 [Channel](#def-channel) 对象。
+
+## 事件
+
+### channel-added
+
+频道被创建或变得对 SDK 可见时触发。必需资源：[`guild`](./guild.md#def-guild)，[`channel`](#def-channel)。
+
+### channel-updated
+
+频道信息更新时触发。必需资源：[`guild`](./guild.md#def-guild)，[`channel`](#def-channel)。
+
+### channel-removed
+
+频道被删除或变得对 SDK 不可见时触发。必需资源：[`guild`](./guild.md#def-guild)，[`channel`](#def-channel)。

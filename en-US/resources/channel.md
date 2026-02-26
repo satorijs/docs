@@ -96,3 +96,17 @@ Mute a guild channel. If the duration is set to 0, it will unmute the channel.
 | `guild_id` | string? | guild id |
 
 Create a direct message channel. Returns a [Channel](#def-channel) object.
+
+## Events
+
+### channel-added
+
+Triggered when a channel is created or becomes visible to the SDK. Required resources: [`guild`](./guild.md#def-guild), [`channel`](#def-channel).
+
+### channel-updated
+
+Triggered when a channel is updated. Required resources: [`guild`](./guild.md#def-guild), [`channel`](#def-channel).
+
+### channel-removed
+
+Triggered when a channel is deleted or becomes invisible to the SDK. Required resources: [`guild`](./guild.md#def-guild), [`channel`](#def-channel).

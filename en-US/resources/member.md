@@ -10,6 +10,7 @@
 | `nick` | string? | user's nickname in the guild |
 | `avatar` | string? | user's avatar in the guild |
 | `joined_at` | number? | join time |
+| `roles` | [GuildRole](./role.md#def-guild-role)[]? | roles of the member |
 
 ## API
 

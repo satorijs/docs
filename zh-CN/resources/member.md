@@ -10,6 +10,7 @@
 | `nick` | string? | 用户在群组中的名称 |
 | `avatar` | string? | 用户在群组中的头像 |
 | `joined_at` | number? | 加入时间 |
+| `roles` | [GuildRole](./role.md#def-guild-role)[]? | 成员的角色列表 |
 
 ## API
 

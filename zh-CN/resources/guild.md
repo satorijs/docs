@@ -48,15 +48,15 @@
 
 ### guild-added
 
-加入群组时触发。必需资源：[`guild`](#def-guild)。
+群组被创建或变得对 SDK 可见时触发。必需资源：[`guild`](#def-guild)。
 
 ### guild-updated
 
-群组被修改时触发。必需资源：[`guild`](#def-guild)。
+群组信息更新时触发。必需资源：[`guild`](#def-guild)。
 
 ### guild-removed
 
-退出群组时触发。必需资源：[`guild`](#def-guild)。
+群组被删除或变得对 SDK 不可见时触发。必需资源：[`guild`](#def-guild)。
 
 ### guild-request
 

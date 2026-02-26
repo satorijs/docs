@@ -48,15 +48,15 @@ Handle an invitation from a guild.
 
 ### guild-added
 
-Triggered when joining a guild. Required resource: [`guild`](#def-guild).
+Triggered when a guild is created or becomes visible to the SDK. Required resource: [`guild`](#def-guild).
 
 ### guild-updated
 
-Triggered when a guild is modified. Required resource: [`guild`](#def-guild).
+Triggered when a guild is updated. Required resource: [`guild`](#def-guild).
 
 ### guild-removed
 
-Triggered when leaving a guild. Required resource: [`guild`](#def-guild).
+Triggered when a guild is deleted or becomes invisible to the SDK. Required resource: [`guild`](#def-guild).
 
 ### guild-request
 
