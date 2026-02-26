@@ -4,7 +4,7 @@ As a cross-platform chat protocol, Satori provides the ability to access any pla
 
 These native capabilities are collectively referred to as internal interfaces, covering APIs, events, message elements, routes, and more.
 
-## Platform vs Adapter {#platform-vs-adapter}
+## Platform vs. Adapter {#platform-vs-adapter}
 
 Most Satori APIs require the `Satori-Platform` and `Satori-User-ID` request headers, in order to distinguish the login account that initiates the request. Different platforms have different `login.platform`, while different accounts on the same platform have different `login.user.id`. With this mechanism, safe isolation is achieved.
 

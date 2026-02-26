@@ -6,8 +6,8 @@ Passive request capabilities are primarily provided through bots and triggered b
 
 Operations performed by bots through API calls can be roughly divided into two categories:
 
-- **Active operations**: Operations that can be performed without user interaction, such as scheduled message delivery;
-- **Passive operations**: Operations performed in response to users, such as answering questions when a user mentions "@bot".
+- **Active operations**: operations that can be performed without user interaction, such as scheduled message delivery;
+- **Passive operations**: operations performed in response to users, such as answering questions when a user mentions "@bot".
 
 At the protocol level, both types of operations are expressed using the unified [`/message.create`](../resources/message.md#api-message-create) interface. However, some platforms may distinguish between these two types of operations and impose restrictions on active operations, such as:
 
