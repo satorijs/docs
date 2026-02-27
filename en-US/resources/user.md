@@ -31,31 +31,3 @@ In application-level implementations, `nick` takes precedence over `name` becaus
 | `user_id` | string | user id |
 
 Get a user by id. Returns a [User](#def-user) object.
-
-### Get Friend List {#api-friend-list}
-
-> <badge>POST</badge> `/friend.list` {.route}
-
-| FIELD | TYPE | DESCRIPTION |
-| --- | --- | --- |
-| `next` | string? | pagination token |
-
-Get the friend list. Returns a [paginated list](../protocol/api.md#list) of [User](#def-user) objects.
-
-### Handle Friend Request {#api-friend-approve}
-
-> <badge>POST</badge> `/friend.approve` {.route}
-
-| FIELD | TYPE | DESCRIPTION |
-| --- | --- | --- |
-| `message_id` | string | request id |
-| `approve` | boolean | whether to approve the request |
-| `comment` | string? | comment |
-
-Handle a friend request.
-
-## Events
-
-### friend-request
-
-Triggered when a new friend request is received. Required resource: [`user`](#def-user).

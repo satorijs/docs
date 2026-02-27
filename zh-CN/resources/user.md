@@ -31,31 +31,3 @@
 | `user_id` | string | 用户 ID |
 
 获取用户信息。返回一个 [`User`](#def-user) 对象。
-
-### 获取好友列表 {#api-friend-list}
-
-> <badge>POST</badge> `/friend.list` {.route}
-
-| 字段 | 类型 | 描述 |
-| --- | --- | --- |
-| `next` | string? | 分页令牌 |
-
-获取好友列表。返回一个 [`User`](#def-user) 的[分页列表](../protocol/api.md#list)。
-
-### 处理好友申请 {#api-friend-approve}
-
-> <badge>POST</badge> `/friend.approve` {.route}
-
-| 字段 | 类型 | 描述 |
-| --- | --- | --- |
-| `message_id` | string | 请求 ID |
-| `approve` | boolean | 是否通过请求 |
-| `comment` | string? | 备注信息 |
-
-处理好友申请。
-
-## 事件
-
-### friend-request
-
-接收到新的好友申请时触发。必需资源：[`user`](#def-user)。
