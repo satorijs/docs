@@ -20,6 +20,7 @@
         "text": "资源",
         "items": [
           { "text": "频道 (Channel)", "link": "/resources/channel.md" },
+          { "text": "表情 (Emoji)", "link": "/resources/emoji.md" },
           { "text": "好友 (Friend)", "link": "/resources/friend.md" },
           { "text": "群组 (Guild)", "link": "/resources/guild.md" },
           { "text": "群组成员 (GuildMember)", "link": "/resources/member.md" },

@@ -20,6 +20,7 @@
         "text": "Resources",
         "items": [
           { "text": "Channel", "link": "/resources/channel.md" },
+          { "text": "Emoji", "link": "/resources/emoji.md" },
           { "text": "Friend", "link": "/resources/friend.md" },
           { "text": "Guild", "link": "/resources/guild.md" },
           { "text": "Guild Member", "link": "/resources/member.md" },

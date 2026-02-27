@@ -24,6 +24,15 @@ The `<at>` element is used to mention a user or users.
 
 The `<sharp>` element is used to mention a channel.
 
+### Emoji (emoji) {#emoji}
+
+| ATTRIBUTE | TYPE | SCOPE | DESCRIPTION |
+| --- | --- | --- | --- |
+| `id` | string? | S/R | emoji id |
+| `name` | string? | S/R | emoji name |
+
+The `<emoji>` element is used to display an emoji.
+
 ### Link (a) {#a}
 
 | ATTRIBUTE | TYPE | SCOPE | DESCRIPTION |

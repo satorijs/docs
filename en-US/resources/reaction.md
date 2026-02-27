@@ -10,7 +10,7 @@
 | --- | --- | --- |
 | `channel_id` | string | channel id |
 | `message_id` | string | message id |
-| `emoji` | string | reaction emoji |
+| `emoji_id` | string | emoji id |
 
 Add a reaction to a specific message.
 
@@ -22,7 +22,7 @@ Add a reaction to a specific message.
 | --- | --- | --- |
 | `channel_id` | string | channel id |
 | `message_id` | string | message id |
-| `emoji` | string | reaction emoji |
+| `emoji_id` | string | emoji id |
 | `user_id` | string? | user id |
 
 Remove a specific reaction added by a user from a specific message. If no user id is provided, it removes the reaction added by the current user.
@@ -35,7 +35,7 @@ Remove a specific reaction added by a user from a specific message. If no user i
 | --- | --- | --- |
 | `channel_id` | string | channel id |
 | `message_id` | string | message id |
-| `emoji` | string? | reaction emoji |
+| `emoji_id` | string? | emoji id |
 
 Clear a specific reaction from a specific message. If no emoji is provided, it clears all reactions.
 
@@ -47,7 +47,7 @@ Clear a specific reaction from a specific message. If no emoji is provided, it c
 | --- | --- | --- |
 | `channel_id` | string | channel id |
 | `message_id` | string | message id |
-| `emoji` | string | reaction emoji |
+| `emoji_id` | string | emoji id |
 | `next` | string? | pagination token |
 
 Get all the users who added a specific reaction to a specific message. Returns a [paginated list](../protocol/api.md#list) of [User](./user.md#def-user) objects.
@@ -56,8 +56,8 @@ Get all the users who added a specific reaction to a specific message. Returns a
 
 ### reaction-added
 
-Triggered when a reaction is added.
+Triggered when a reaction is added. Required resources: [`emoji`](./emoji.md#def-emoji).
 
 ### reaction-removed
 
-Triggered when a reaction is removed.
+Triggered when a reaction is removed. Required resources: [`emoji`](./emoji.md#def-emoji).
