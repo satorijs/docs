@@ -26,6 +26,8 @@ The Satori protocol defines two sets of event services, based on WebSocket and W
 | `argv` | [Argv](../resources/interaction.md#def-argv)? | argv object |
 | `button` | [Button](../resources/interaction.md#def-button)? | button object |
 | `channel` | [Channel](../resources/channel.md#def-channel)? | channel object |
+| `emoji` | [Emoji](../resources/emoji.md#def-emoji)? | emoji object |
+| `friend` | [Friend](../resources/friend.md#def-friend)? | friend object |
 | `guild` | [Guild](../resources/guild.md#def-guild)? | guild object |
 | `member` | [GuildMember](../resources/member.md#def-guild-member)? | guild member object |
 | `message` | [Message](../resources/message.md#def-message)? | message object |

@@ -26,6 +26,8 @@ Satori 协议规定了两套事件服务，分别基于 WebSocket 和 WebHook。
 | `argv` | [Argv](../resources/interaction.md#def-argv)? | 交互指令 |
 | `button` | [Button](../resources/interaction.md#def-button)? | 交互按钮 |
 | `channel` | [Channel](../resources/channel.md#def-channel)? | 事件所属的频道 |
+| `emoji` | [Emoji](../resources/emoji.md#def-emoji)? | 事件的表情 |
+| `friend` | [Friend](../resources/friend.md#def-friend)? | 事件的好友 |
 | `guild` | [Guild](../resources/guild.md#def-guild)? | 事件所属的群组 |
 | `member` | [GuildMember](../resources/member.md#def-guild-member)? | 事件的目标成员 |
 | `message` | [Message](../resources/message.md#def-message)? | 事件的消息 |
