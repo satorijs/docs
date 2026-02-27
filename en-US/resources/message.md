@@ -7,7 +7,7 @@
 | FIELD | TYPE | DESCRIPTION |
 | --- | --- | --- |
 | `id` | string | message id |
-| `content` | string | message content |
+| `content` | string? | message content |
 | `channel` | [Channel](./channel.md#def-channel)? | channel object |
 | `guild` | [Guild](./guild.md#def-guild)? | guild object |
 | `member` | [GuildMember](./member.md#def-guild-member)? | guild member object |

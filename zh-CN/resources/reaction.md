@@ -56,8 +56,8 @@
 
 ### reaction-added
 
-当表态被添加时触发。必需资源：[`emoji`](./emoji.md#def-emoji)。
+当表态被添加时触发。必需资源：[`emoji`](./emoji.md#def-emoji), [`message`](./message.md#def-message)。
 
 ### reaction-removed
 
-当表态被移除时触发。必需资源：[`emoji`](./emoji.md#def-emoji)。
+当表态被移除时触发。必需资源：[`emoji`](./emoji.md#def-emoji), [`message`](./message.md#def-message)。

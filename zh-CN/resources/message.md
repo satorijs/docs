@@ -7,7 +7,7 @@
 | 字段 | 类型 | 描述 |
 | --- | --- | --- |
 | `id` | string | 消息 ID |
-| `content` | string | 消息内容 |
+| `content` | string? | 消息内容 |
 | `channel` | [Channel](./channel.md#def-channel)? | 频道对象 |
 | `guild` | [Guild](./guild.md#def-guild)? | 群组对象 |
 | `member` | [Member](./member.md#def-member)? | 群组成员对象 |

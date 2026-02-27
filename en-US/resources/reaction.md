@@ -56,8 +56,8 @@ Get all the users who added a specific reaction to a specific message. Returns a
 
 ### reaction-added
 
-Triggered when a reaction is added. Required resources: [`emoji`](./emoji.md#def-emoji).
+Triggered when a reaction is added. Required resources: [`emoji`](./emoji.md#def-emoji), [`message`](./message.md#def-message).
 
 ### reaction-removed
 
-Triggered when a reaction is removed. Required resources: [`emoji`](./emoji.md#def-emoji).
+Triggered when a reaction is removed. Required resources: [`emoji`](./emoji.md#def-emoji), [`message`](./message.md#def-message).
