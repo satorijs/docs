@@ -1,3 +1,3 @@
-# [satori.js.org](https://satori.js.org)
+# [satori.chat](https://satori.chat)
 
 Documentation for Satori Protocol.

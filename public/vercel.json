@@ -1,0 +1,27 @@
+{
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31556952, immutable"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/:path((?!zh-CN).*).html",
+      "destination": "/zh-CN/:path.html"
+    },
+    {
+      "source": "/:path((?!zh-CN).*)/",
+      "destination": "/zh-CN/:path/"
+    },
+    {
+      "source": "/",
+      "destination": "/zh-CN/"
+    }
+  ]
+}
