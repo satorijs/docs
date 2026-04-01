@@ -4,7 +4,7 @@ import Home from './VPHome.vue'
 import './index.scss'
 
 export default defineTheme({
-  layouts: {
-    home: Home,
+  enhanceApp(ctx) {
+    ctx.app.component('Home2', Home)
   },
 })

@@ -1,5 +1,6 @@
 ---
-layout: home
+layout: home2
+sidebar: false
 
 links:
   starter: /zh-CN/introduction.html

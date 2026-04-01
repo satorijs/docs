@@ -18,7 +18,7 @@
     "@vueuse/core": "^14.1.0",
     "sass": "^1.97.2",
     "typescript": "^5.9.3",
-    "vitepress": "2.0.0-alpha.15",
+    "vitepress": "2.0.0-alpha.17",
     "vue": "^3.5.16"
   }
 }
