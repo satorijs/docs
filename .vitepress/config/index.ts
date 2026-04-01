@@ -6,6 +6,8 @@ export default defineConfig({
   title: 'Satori',
   description: 'The Universal Messenger Protocol',
 
+  fallbackLocale: 'zh-CN',
+
   locales: {
     'zh-CN': zhCN,
     'en-US': enUS,
