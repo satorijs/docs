@@ -15,11 +15,11 @@ The Satori development team has long been engaged in chatbot development and is 
   <a class="adapter">Email</a>
   <a class="adapter">Matrix</a>
   <a class="adapter">QQ</a>
+  <a class="adapter">Satori</a>
   <a class="adapter">Slack</a>
   <a class="adapter">Telegram</a>
-  <a class="adapter">WeChat Official Account</a>
+  <a class="adapter">Wechat Official</a>
   <a class="adapter">WeCom</a>
-  <a class="adapter">HoYoLAB</a>
   <a class="adapter">WhatsApp</a>
   <a class="adapter">Zulip</a>
 </div>
