@@ -1,0 +1,66 @@
+---
+url: /resources/guild.md
+---
+# 群组 (Guild)
+
+## 类型定义
+
+### Guild {#def-guild}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `id` | string | 群组 ID |
+| `name` | string? | 群组名称 |
+| `avatar` | string? | 群组头像 |
+
+## API
+
+### 获取群组 {#api-guild-get}
+
+> POST `/guild.get` {.route}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `guild_id` | string | 群组 ID |
+
+根据 ID 获取。返回一个 [Guild](#def-guild) 对象。
+
+### 获取群组列表 {#api-guild-list}
+
+> POST `/guild.list` {.route}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `next` | string? | 分页令牌 |
+
+获取当前用户加入的全部群组。返回一个 [Guild](#def-guild) 的[分页列表](../protocol/api.md#list)。
+
+### 处理群组邀请 {#api-guild-approve}
+
+> POST `/guild.approve` {.route}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `message_id` | string | 请求 ID |
+| `approve` | boolean | 是否通过请求 |
+| `comment` | string? | 备注信息 |
+
+处理来自群组的邀请。
+
+## 事件
+
+### guild-added
+
+群组被创建或变得对 SDK 可见时触发。必需资源：[`guild`](#def-guild)。
+
+### guild-updated
+
+群组信息更新时触发。必需资源：[`guild`](#def-guild)。
+
+### guild-removed
+
+群组被删除或变得对 SDK 不可见时触发。必需资源：[`guild`](#def-guild)。
+
+### guild-request
+
+接收到新的入群邀请时触发。必需资源：[`guild`](#def-guild)。

@@ -1,0 +1,3159 @@
+---
+url: /adapters/dingtalk.md
+---
+# @satorijs/adapter-dingtalk
+
+## 接入方法
+
+1. 前往 [钉钉开放平台](https://open-dev.dingtalk.com/) 注册账号
+2. 创建一个应用并获取 AppKey 和 AppSecret
+3. 在「消息推送」中配置事件订阅
+4. 将上述信息作为机器人配置项即可使用
+
+## 配置项
+
+### options.appkey
+
+* 类型: `string`
+
+机器人的 AppKey。
+
+### options.secret
+
+* 类型: `string`
+
+机器人的 AppSecret。
+
+### options.protocol
+
+* 可选值: http, ws
+
+要使用的协议类型。
+
+### options.agentId
+
+* 类型: `number`
+
+机器人的 AgentId。
+
+---
+
+---
+url: /adapters/discord.md
+---
+# @satorijs/adapter-discord
+
+## 接入方法
+
+1. 前往 <https://discord.com/developers/applications>，登录账号创建一个应用
+2. 点击「Bot」并创建一个新的机器人，保存这个页面中的 token（请注意不要泄露）
+3. 要将机器人拉进你的服务器，点击「OAuth2」，并在网址生成器中勾选 Bot 和机器人所需要的权限
+4. 打开生成的链接，选择你具有管理权限的服务器，就成功把机器人添加进去了
+5. 将上面的 token 作为机器人配置项即可使用
+
+## 配置项
+
+### options.token
+
+* 类型: `string`
+
+机器人账户的令牌。
+
+### options.type
+
+* 类型: `'bot' | 'user'`
+* 默认值: `'bot'`
+
+登录类型。
+
+### options.intents
+
+* 类型: `number`
+
+需要订阅的机器人事件。这是一个以 bitset 形式表达的正整数，每一位代表一类事件。
+
+参考：[Gateway Intents](https://discord.com/developers/docs/topics/gateway#gateway-intents)
+
+### options.slash
+
+* 类型: `boolean`
+* 默认值: `true`
+
+是否启用斜杠指令。
+
+---
+
+---
+url: /adapters/kook.md
+---
+# @satorijs/adapter-kook
+
+## 接入方法
+
+1. 前往 [开发者平台](https://developer.kookapp.cn/)，选择「机器人」并点击「新建」
+2. 根据自身需要，在「机器人连接模式」中选择 Webhook 或 WebSocket 中的一种：
+   * 如果是 Webhook，请记下页面中的 `token` 和 `verify_token`（请注意不要泄露），并作为机器人的配置项
+   * 如果是 WebSocket，则只需记录 `token`（请注意不要泄露）并作为机器人的配置项即可
+
+## 基础配置项
+
+### options.protocol
+
+* 可选值: http, ws
+
+要使用的协议类型。
+
+### options.token
+
+* 类型: `string`
+
+机器人账户的令牌。
+
+### options.endpoint
+
+* 类型: `string`
+* 默认值: `'https://www.kookapp.cn/api/v3'`
+
+要请求的 API 网址。
+
+### options.attachMode
+
+* 类型: `'separate' | 'mixed' | 'card'`
+* 默认值: `'separate'`
+
+控制当尝试发送含有资源元素的消息时的行为。
+
+* **separate:** 每一个资源消息段，以及资源消息段之间的文本都将单独发送一条消息
+* **mixed:** 当要发送的内容中含有多个资源消息段或资源消息段和文本的混合时，发送卡片消息；否则将单独发送资源消息段
+* **card:** 当要发送的内容中含有资源消息段，则以卡片消息的形式发送
+
+## HTTP 配置项
+
+### options.verifyToken
+
+* 类型: `string`
+
+机器人账户的验证令牌。
+
+### options.path
+
+* 类型: `string`
+* 默认值: `'/kook'`
+
+服务器监听的路径。
+
+---
+
+---
+url: /adapters/lark.md
+---
+# @satorijs/adapter-lark
+
+## 接入方法
+
+1. 前往 [飞书开放平台](https://open.feishu.cn/app) 或 [Lark Developer](https://open.larksuite.com/app)
+2. 创建企业自建应用
+3. 在「凭证与基础信息」中获取 App ID 和 App Secret
+4. 在「事件与回调」中配置事件订阅
+5. 将上述信息作为机器人配置项即可使用
+
+## 基础配置项
+
+### options.appId
+
+* 类型: `string`
+
+机器人的应用 ID。
+
+### options.appSecret
+
+* 类型: `string`
+
+机器人的应用密钥。
+
+### options.platform
+
+* 类型: `'feishu' | 'lark'`
+* 默认值: `'feishu'`
+
+平台类型。
+
+### options.protocol
+
+* 可选值: http, ws
+
+要使用的协议类型。
+
+## HTTP 配置项
+
+### options.path
+
+* 类型: `string`
+
+服务器监听的路径。
+
+### options.selfUrl
+
+* 类型: `string`
+
+服务暴露在公网的地址。
+
+### options.encryptKey
+
+* 类型: `string`
+
+事件加密密钥。
+
+### options.verificationToken
+
+* 类型: `string`
+
+事件验证令牌。
+
+---
+
+---
+url: /adapters/line.md
+---
+# @satorijs/adapter-line
+
+## 接入方法
+
+1. 前往 [LINE Developers](https://developers.line.biz/) 注册账号
+2. 创建一个 Provider 和 Channel (Messaging API)
+3. 在 Channel 设置中获取 Channel Secret 和 Channel Access Token
+4. 配置 Webhook URL
+5. 将上述信息作为机器人配置项即可使用
+
+## 配置项
+
+### options.token
+
+* 类型: `string`
+
+Channel Access Token。
+
+### options.secret
+
+* 类型: `string`
+
+Channel Secret。
+
+---
+
+---
+url: /adapters/mail.md
+---
+# @satorijs/adapter-mail
+
+## 接入方法
+
+1. 准备一个邮箱账号，确保其支持 IMAP 和 SMTP 协议
+2. 在邮箱设置中开启 IMAP/SMTP 服务
+3. 获取授权码或应用专用密码
+4. 将上述信息作为机器人配置项即可使用
+
+## 配置项
+
+### options.name
+
+* 类型: `string`
+
+发送邮件时的显示名称。
+
+### options.username
+
+* 类型: `string`
+
+邮箱用户名。
+
+### options.password
+
+* 类型: `string`
+
+邮箱密码或授权码。
+
+### options.subject
+
+* 类型: `string`
+* 默认值: `'Koishi'`
+
+邮件主题前缀。
+
+### options.imap.host
+
+* 类型: `string`
+
+IMAP 服务器地址。
+
+### options.imap.port
+
+* 类型: `number`
+
+IMAP 服务器端口。
+
+### options.imap.tls
+
+* 类型: `boolean`
+* 默认值: `true`
+
+是否使用 TLS 连接。
+
+### options.smtp.host
+
+* 类型: `string`
+
+SMTP 服务器地址。
+
+### options.smtp.port
+
+* 类型: `number`
+
+SMTP 服务器端口。
+
+### options.smtp.tls
+
+* 类型: `boolean`
+* 默认值: `true`
+
+是否使用 TLS 连接。
+
+---
+
+---
+url: /adapters/matrix.md
+---
+# @satorijs/adapter-matrix
+
+## 接入方法
+
+1. 准备一个 Matrix 服务器（如 Synapse）
+2. 创建 Application Service 配置文件，获取 HS Token 和 AS Token
+3. 在 Homeserver 中注册该 Application Service
+4. 将上述信息作为机器人配置项即可使用
+
+参考文档：<https://spec.matrix.org/latest/application-service-api/>
+
+## 配置项
+
+### options.id
+
+* 类型: `string`
+
+机器人的用户 ID。
+
+### options.host
+
+* 类型: `string`
+
+Matrix Homeserver 的域名。
+
+### options.hsToken
+
+* 类型: `string`
+
+Homeserver Token。
+
+### options.asToken
+
+* 类型: `string`
+
+Application Service Token。
+
+### options.name
+
+* 类型: `string`
+
+机器人的显示名称。
+
+### options.avatar
+
+* 类型: `string`
+
+机器人的头像 URL。
+
+### options.endpoint
+
+* 类型: `string`
+* 默认值: `'https://{host}'`
+
+Homeserver 的 API 终结点。
+
+### options.path
+
+* 类型: `string`
+* 默认值: `'/matrix'`
+
+Application Service 监听的路径。
+
+---
+
+---
+url: /adapters/qq.md
+---
+# @satorijs/adapter-qq
+
+## 接入方法
+
+1. 前往 [QQ 开放平台](https://q.qq.com/) 注册账号
+2. 在「应用管理」中创建一个机器人应用
+3. 获取 AppID, Token 和 Secret
+4. 将上述信息作为机器人配置项即可使用
+
+## 配置项
+
+### options.id
+
+* 类型: `string`
+
+机器人 ID (AppID)。
+
+### options.secret
+
+* 类型: `string`
+
+机器人密钥 (AppSecret)。
+
+### options.token
+
+* 类型: `string`
+
+机器人令牌 (Token)。
+
+### options.type
+
+* 可选值: private, public
+
+机器人类型。`private` 为私域机器人，`public` 为公域机器人。
+
+### options.protocol
+
+* 可选值: websocket, webhook
+
+要使用的协议类型。
+
+### options.sandbox
+
+* 类型: `boolean`
+* 默认值: `false`
+
+是否开启沙盒模式。
+
+### options.endpoint
+
+* 类型: `string`
+* 默认值: `'https://api.sgroup.qq.com/'`
+
+要连接的服务器地址。
+
+### options.authType
+
+* 类型: `'bot' | 'bearer'`
+* 默认值: `'bearer'`
+
+验证方式。
+
+### options.intents
+
+* 类型: `number`
+
+需要订阅的机器人事件。
+
+---
+
+---
+url: /adapters/satori.md
+---
+# @satorijs/adapter-satori
+
+Satori 协议适配器，用于连接到其他 Satori 协议服务端。
+
+## 接入方式
+
+填写下方的配置项即可。
+
+## 配置项
+
+### config.endpoint
+
+* 类型: `string`
+* 必需参数
+
+Satori 服务器的地址。
+
+### config.token
+
+* 类型: `string`
+
+API 访问令牌。
+
+---
+
+---
+url: /adapters/slack.md
+---
+# @satorijs/adapter-slack
+
+## 接入方法
+
+1. 前往 [Slack API](https://api.slack.com/apps) 创建一个应用
+2. 在「OAuth & Permissions」中添加所需的权限范围
+3. 安装应用到工作区，获取 Bot Token 和 App-Level Token
+4. 将上述信息作为机器人配置项即可使用
+
+## 基础配置项
+
+### options.token
+
+* 类型: `string`
+
+App-Level Token。
+
+### options.botToken
+
+* 类型: `string`
+
+OAuth Token (Bot Token)。
+
+### options.protocol
+
+* 可选值: http, ws
+
+要使用的协议类型。
+
+## HTTP 配置项
+
+### options.signing
+
+* 类型: `string`
+
+Signing Secret，用于验证请求签名。
+
+---
+
+---
+url: /adapters/telegram.md
+---
+# @satorijs/adapter-telegram
+
+## 接入方法
+
+1. 搜索 @botfather（有个官方认证的符号）并进入聊天界面
+2. 输入 `/start` 后，会出现一个使用菜单，你可以使用这里指令对你的机器人进行配置
+3. 要创建一个机器人，请点击 `/newbot`，并根据系统提示完成创建流程
+4. 使用 `/setprivacy` 关闭 Privacy Mode（设置为 DISABLED，不然机器人只能收到特定消息）
+5. 创建完毕后，你会获得一个 token（请注意不要泄露），将其作为机器人配置项即可使用
+
+参考文档：<https://core.telegram.org/bots>
+
+::: tip
+如果启动机器人后发现收不到不带 `/` 的消息，这很可能是由于 Privacy Mode 未开启。如果开启后仍然收不到消息，请尝试将机器人从群组中移除后重新加入。
+:::
+
+## 机器人选项
+
+### options.protocol
+
+* 可选值: server, polling
+
+要使用的协议类型。
+
+### options.token
+
+* 类型: `string`
+
+机器人账户的令牌。
+
+### options.slash
+
+* 类型: `boolean`
+* 默认值: `true`
+
+是否启用斜杠指令。
+
+### options.files.endpoint
+
+* 类型: `string`
+
+文件请求的终结点。
+
+### options.files.local
+
+* 类型: `boolean`
+* 默认值: `false`
+
+是否启用 [Telegram Bot API](https://github.com/tdlib/telegram-bot-api) 本地模式。
+
+## HTTP 配置项
+
+### options.path
+
+* 类型: `string`
+* 默认值: `'/telegram'`
+
+服务器监听的路径。
+
+### options.selfUrl
+
+* 类型: `string`
+
+服务暴露在公网的地址。
+
+---
+
+---
+url: /adapters/wechat-official.md
+---
+# @satorijs/adapter-wechat-official
+
+## 接入方法
+
+1. 前往 [微信公众平台](https://mp.weixin.qq.com/) 注册账号
+2. 在「基本配置」中获取 AppID 和 AppSecret
+3. 在「服务器配置」中配置 URL、Token 和 EncodingAESKey
+4. 将上述信息作为机器人配置项即可使用
+
+## 配置项
+
+### options.account
+
+* 类型: `string`
+
+微信公众号账号。
+
+### options.appid
+
+* 类型: `string`
+
+应用 ID。
+
+### options.secret
+
+* 类型: `string`
+
+应用密钥。
+
+### options.token
+
+* 类型: `string`
+
+服务器配置的 Token。
+
+### options.aesKey
+
+* 类型: `string`
+
+消息加解密密钥。
+
+### options.customerService
+
+* 类型: `boolean`
+* 默认值: `false`
+
+是否启用客服消息。
+
+---
+
+---
+url: /adapters/wecom.md
+---
+# @satorijs/adapter-wecom
+
+## 接入方法
+
+1. 前往 [企业微信管理后台](https://work.weixin.qq.com/) 注册企业
+2. 在「应用管理」中创建自建应用
+3. 获取 CorpId、AgentId 和 Secret
+4. 在「接收消息」设置中配置 URL、Token 和 EncodingAESKey
+5. 将上述信息作为机器人配置项即可使用
+
+## 配置项
+
+### options.corpId
+
+* 类型: `string`
+
+企业 ID。
+
+### options.agentId
+
+* 类型: `string`
+
+应用 AgentId。
+
+### options.secret
+
+* 类型: `string`
+
+应用密钥。
+
+### options.token
+
+* 类型: `string`
+
+服务器配置的 Token。
+
+### options.aesKey
+
+* 类型: `string`
+
+消息加解密密钥。
+
+---
+
+---
+url: /adapters/whatsapp.md
+---
+# @satorijs/adapter-whatsapp
+
+## 接入方法
+
+1. 前往 [Meta for Developers](https://developers.facebook.com/) 注册账号
+2. 创建一个 WhatsApp Business 应用
+3. 获取 System User Token 和 WhatsApp Business Account ID
+4. 配置 Webhook 并获取 Verify Token 和 App Secret
+5. 将上述信息作为机器人配置项即可使用
+
+## 配置项
+
+### options.id
+
+* 类型: `string`
+
+WhatsApp Business Account ID。
+
+### options.systemToken
+
+* 类型: `string`
+
+System User Token。
+
+### options.verifyToken
+
+* 类型: `string`
+
+Webhook 验证令牌。
+
+### options.secret
+
+* 类型: `string`
+
+App Secret，用于验证 Webhook 请求签名。
+
+---
+
+---
+url: /adapters/zulip.md
+---
+# @satorijs/adapter-zulip
+
+## 接入方法
+
+1. 登录自己的 Zulip 社群，右上角设置按钮选择「个人设置」，在弹窗左侧进入「机器人」，点击「新增机器人」输入相关信息后点击新增
+2. 在界面中找到新创建的机器人，复制机器人邮箱填入插件的 `email` 字段，复制 API KEY 填入插件的 `key` 字段
+
+## 配置项
+
+### config.email
+
+* 类型: `string`
+
+机器人邮箱。
+
+### config.key
+
+* 类型: `string`
+
+机器人 API 密钥。
+
+---
+
+---
+url: /protocol/api.md
+---
+# API
+
+Satori 协议规定了一套基于 HTTP 的 API 服务，用于发送消息和调用其他功能。
+
+## HTTP API
+
+这是一套 HTTP RPC 风格的 API，所有 URL 的形式均为 `/{version}/{resource}.{method}`。其中，`version` 为 API 的版本号，`resource` 是资源类型，`method` 为方法名。
+
+目前 Satori 仅有 v1 一个版本。
+
+绝大多数 API 的请求都使用 `POST`，参数通过 `application/json` 编码在请求体中。返回值也是 JSON 格式。作为特例，[文件上传](../advanced/resource.md#api-upload-create) API 使用 `multipart/form-data` 编码。
+
+请求头中需要包含 `Satori-Platform` 和 `Satori-User-ID` 字段，分别表示平台名称和平台账号。
+
+一个合法的请求示例形如：
+
+```text
+POST /v1/channel.get
+Content-Type: application/json
+Authorization: Bearer 1234567890
+Satori-Platform: discord
+Satori-User-ID: 1234567890
+
+{"channel_id": "1234567890"}
+```
+
+### 鉴权
+
+鉴权通过 HTTP API 中的 `Authorization` 请求头来实现。其中涉及的鉴权令牌由 SDK 分发，本协议不做任何限制。
+
+如果 SDK 没有配置鉴权，则应用无需提供上述请求头。
+
+### 状态码
+
+| 状态码 | 描述 |
+| --- | --- |
+| 200 (OK) | 请求成功 |
+| 400 (BAD REQUEST) | 请求格式错误 |
+| 401 (UNAUTHORIZED) | 缺失鉴权 |
+| 403 (FORBIDDEN) | 权限不足 |
+| 404 (NOT FOUND) | API 不存在 |
+| 405 (METHOD NOT ALLOWED) | 请求方法不支持 |
+| 5XX (SERVER ERROR) | 服务器错误 |
+
+::: tip
+如果某个标准 API 没有被某个平台支持，则应该返回 404 (NOT FOUND) 而非 501 (NOT IMPLEMENTED)。只有当一个 API 被平台支持但是未被适配器实现时，才应该返回 501。
+:::
+
+### 平台特性 实验性 {#platform-features}
+
+[Login](../resources/login.md#def-login) 对象中的 `features` 字段是一个字符串数组，用于表示平台的特性。这些特性可以用于判断平台是否支持某些 API。合法的平台特性包括：
+
+* API 可用性，如特性 `message.delete` 表示支持使用 [`message.delete`](../resources/message.md#api-message-delete) 撤回消息。
+* API 额外特性，如特性 `message.list.from` 表示使用 [`message.list`](../resources/message.md#api-message-create) 查询消息列表时支持将消息 ID 作为分页令牌。
+* 平台额外特性，如特性 `guild.plain` 表示该平台的群组内只能存在一个消息频道。
+
+目前仅有 API 名称本身是规范的用法。我们将在后续版本中提供更全面的标准特性列表。
+
+### 进阶 API
+
+除了标准 API 外，Satori 还提供了一些进阶功能。
+
+* `/{version}/proxy` 的子路由用于代理平台资源，请参见[代理路由](../advanced/resource.md#proxy-route)。
+* `/{version}/meta` 的子路由用于访问 SDK 相关接口，请参见[元信息 API](../advanced/meta.md#api)。
+* `/{version}/internal` 的子路由用于访问平台内部接口，请参见[内部 API](../advanced/internal.md#api)。
+
+## 类型定义
+
+### 分页列表 {#list}
+
+部分 API 可能会返回分页数据。这种情况下，响应会是一个 `List` 对象：
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `data` | array | 数据 |
+| `next` | string? | 下一页的令牌 |
+
+你可以使用 `next` 令牌来获取下一页的数据。如果 `next` 为空，则表示没有更多数据了。
+
+### 双向分页列表 {#bidi-list}
+
+极少数 API 返回可双向延伸的分页数据。这种情况下，响应会是一个 `BidiList` 对象：
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `data` | array | 数据 |
+| `prev` | string? | 上一页的令牌 |
+| `next` | string? | 下一页的令牌 |
+
+在对应的 API 中，你可以通过 `direction` 和 `order` 参数来指定方向和排序。
+
+`direction` 参数有三种不同的取值：
+
+* `before`：向前获取数据，此时 `prev` 和 `next` 相同，均表示上一页的令牌。
+* `after`：向后获取数据，此时 `prev` 和 `next` 相同，均表示下一页的令牌。
+* `around`：向两侧获取数据，此时 `prev` 表示上一页的令牌，`next` 表示下一页的令牌。
+
+如果 `prev` 或 `next` 缺失，则表示在该方向上没有更多数据了。
+
+`order` 参数有两种不同的取值：
+
+* `asc`：升序排列。
+* `desc`：降序排列。
+
+---
+
+---
+url: /protocol/events.md
+---
+# 事件
+
+Satori 协议规定了两套事件服务，分别基于 WebSocket 和 WebHook。
+
+## 类型定义
+
+### Opcode
+
+| 名称 | 值 | 方向 | 描述 |
+| --- | --- | --- | --- |
+| `EVENT` | 0 | 接收 | 事件 |
+| `PING` | 1 | 发送 | 心跳 |
+| `PONG` | 2 | 接收 | 心跳回复 |
+| `IDENTIFY` | 3 | 发送 | 鉴权 |
+| `READY` | 4 | 接收 | 鉴权成功 |
+| `META` | 5 | 接收 | 元信息更新 实验性 |
+
+### Event
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `sn` | number | 序列号 |
+| `type` | string | 事件类型 |
+| `timestamp` | number | 事件的时间戳 |
+| `login` | [Login](../resources/login.md#def-login) | 登录信息 |
+| `argv` | [Argv](../resources/interaction.md#def-argv)? | 交互指令 |
+| `button` | [Button](../resources/interaction.md#def-button)? | 交互按钮 |
+| `channel` | [Channel](../resources/channel.md#def-channel)? | 事件所属的频道 |
+| `emoji` | [Emoji](../resources/emoji.md#def-emoji)? | 事件的表情 |
+| `friend` | [Friend](../resources/friend.md#def-friend)? | 事件的好友 |
+| `guild` | [Guild](../resources/guild.md#def-guild)? | 事件所属的群组 |
+| `member` | [GuildMember](../resources/member.md#def-guild-member)? | 事件的目标成员 |
+| `message` | [Message](../resources/message.md#def-message)? | 事件的消息 |
+| `operator` | [User](../resources/user.md#def-user)? | 事件的操作者 |
+| `role` | [GuildRole](../resources/role.md#def-guild-role)? | 事件的目标角色 |
+| `user` | [User](../resources/user.md#def-user)? | 事件的目标用户 |
+| `referrer` | object? | 用于[被动请求](../advanced/passive.md)的来源信息 实验性 |
+
+事件分为登录事件与非登录事件，其中登录事件特指与 Login 变化相关的事件 (如 [login-added](../resources/login.md#login-added))。所有事件都采用上述数据结构，不过在细节上有所区别：
+
+* 非登录事件中的 `login` 资源只会带有 `sn`, `user` 和 `platform` 三个属性；
+* 非登录事件均确保 `login.status` 为 `ONLINE` (尽管不会传递这个字段)；
+* 登录事件会带有完整的 `login` 资源，但可能不存在 `user` 和 `platform`；
+* 登录事件不参与[会话恢复](#session-recovery)。
+
+事件中的各属性遵循[资源提升](./index.md)规则。
+
+## WebSocket
+
+WebSocket 服务用于在 Satori SDK 与应用之间维护一个持久的、有状态的链接。通过这个链接，Satori 应用可以实时接收 SDK 推送的事件。
+
+WebSocket 服务的地址为 `/{version}/events`。其中，`version` 为 API 的版本号。
+
+目前 Satori 仅有 v1 一个版本。
+
+### 连接流程
+
+总的来说，Satori 应用需要在连接后遵循以下步骤：
+
+1. 连接建立后，在 10s 内发送一个 `IDENTIFY` 信令，用于鉴权和恢复会话；SDK 收到后会回复一个 `READY` 信令，并开启事件推送；
+2. 连接建立后，每隔 10s 向 SDK 发送一次 `PING` 信令；SDK 收到后会回复一个 `PONG` 信令；
+3. 应用持续接收来自 SDK 的 `EVENT` 信令，用于接收事件。
+
+信令的数据结构如下：
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `op` | [Opcode](#opcode) | 信令类型 |
+| `body` | object? | 信令数据 |
+
+`IDENTIFY` 信令的 `body` 数据结构如下：
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `token` | string? | 鉴权令牌 |
+| `sn` | number? | 序列号 |
+
+`READY` 信令的 `body` 数据结构如下：
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `logins` | [Login](../resources/login.md#def-login)\[] | 登录信息 |
+| `proxy_urls` | string\[] | [代理路由](../advanced/resource.md#proxy-route)列表 |
+
+`META` 信令的 `body` 数据结构如下：
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `proxy_urls` | string\[] | [代理路由](../advanced/resource.md#proxy-route)列表 |
+
+`EVENT` 信令的 `body` 数据结构参见 [Event](#event)。
+
+### 鉴权
+
+WebSocket 鉴权通过 `IDENTIFY` 信令的 `token` 字段来实现。其中涉及的鉴权令牌由 SDK 分发，本协议不做任何限制。
+
+如果 SDK 没有配置鉴权，则应用无需提供上述字段。
+
+### 会话恢复 {#session-recovery}
+
+当连接短暂中断时，Satori 应用可以通过 `IDENTIFY` 信令的 `sn` 字段来恢复会话。`sn` 字段的值为上一次连接中最后一个接收到的 `EVENT` 信令的 `sn` 字段。会话恢复后，SDK 会向应用推送所有在断开连接期间发生的事件。
+
+登录事件将不会在会话恢复过程中推送，因为在 `READY` 信令中已经包含了最新的登录状态。
+
+## WebHook 可选 实验性
+
+::: tip
+这是一个可选功能。
+:::
+
+WebHook 服务是指，Satori SDK 在接收到平台事件时，向应用提供的 HTTP 地址推送事件。一个 SDK 应当可以配置多个 WebHook，并允许应用对发送者进行鉴权。这些 WebHook 的配置方式由 SDK 自身决定，本协议仅规范化了一组 [API](../advanced/meta.md#api)，不做强制要求。
+
+事件推送以 POST 的形式进行。请求头包含 `Satori-Opcode` 字段，对应本次推送的[信令类型](#opcode)；请求体是一个 JSON 对象，对应本次推送的信令数据。例如，一次事件推送将会拥有 `Satori-Opcode: 0` 的请求头，以及一个符合 [Event](#event) 结构的请求体。
+
+WebHook 所涉及的信令仅包含 `EVENT`, `META` 两种。
+
+应用收到 WebHook 请求时，如果能够顺利鉴权并处理请求，应当返回 2XX 的状态码。如果鉴权失败，应当返回 4XX 的状态码。如果处理失败，应当返回 5XX 的状态码。
+
+### 反向鉴权
+
+::: tip
+这里的鉴权与 API 与 WebSocket 中的鉴权逻辑类似，但方向相反。
+:::
+
+Satori 应用可以要求 SDK 在发送 WebHook 请求时附带一个 `Authorization` 请求头，格式为 `Bearer {token}`。其中，`token` 由应用进行分发。
+
+---
+
+---
+url: /resources/interaction.md
+---
+# 交互 (Interaction) 实验性
+
+::: tip
+交互功能主要通过机器人提供，并由用户在聊天应用中触发。如果你要实现或接入的聊天平台不支持机器人相关功能，那么可以直接忽略本节。
+:::
+
+## 类型定义
+
+### Argv {#def-argv}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `name` | string | 指令名称 |
+| `arguments` | array | 参数 |
+| `options` | object | 选项 |
+
+### Button {#def-button}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `id` | string | 按钮 ID |
+
+## 事件
+
+### interaction/button
+
+类型为 `action` 的按钮被点击时触发。必需资源：[`button`](#def-button)。
+
+### interaction/command
+
+调用斜线指令时触发。资源 [`argv`](#def-argv) 或 [`message`](./message.md#def-message) 中至少包含其一。
+
+::: tip
+许多平台都支持斜线指令，但它们的实现方式各不相同。如果平台的斜线指令仅仅提供在前端，机器人无法直接判断一个事件是否为斜线指令调用，那么直接实现为普通消息事件即可。
+:::
+
+---
+
+---
+url: /introduction.md
+---
+# 介绍
+
+Satori 是一个通用的聊天协议。我们希望 Satori 能够抹平不同聊天平台之间的差异，让开发者以更低的成本开发出跨平台、可扩展、高性能的聊天应用。
+
+Satori 的名称来源于游戏东方 Project 中的角色 [古明地觉 (Komeiji Satori)](https://zh.touhouwiki.net/wiki/古明地觉)。古明地觉能够以心灵感应的方式与各种动物交流，取这个名字是希望 Satori 能够成为各个聊天平台之间的桥梁。
+
+Satori 的开发团队长期从事聊天机器人开发，熟悉各种聊天平台的通信方式。经过长达 4 年的发展，Satori 有了健全的设计和完善的实现。目前，Satori 官方提供了超过 15 个聊天平台的适配器，完全覆盖了世界上主流的聊天平台：
+
+这些适配器不仅为你带来了开箱即用的体验，也从实际上证明了 Satori 协议的通用性和扩展性。
+
+不必担心使用 Satori 后会失去对聊天平台的控制。得益于 Satori 的内部接口机制，你完全可以大多数情况下编写通用代码，并在需要的时候使用内部接口来实现平台特定功能。
+
+此外，Satori 还为规模化的场景提供了全套的解决方案。小到个人电脑上的聊天机器人，大到分布式集群上的聊天平台后端，Satori 都能满足你的需求。
+
+---
+
+---
+url: /sdk/session.md
+---
+# 会话 (Session)
+
+**会话 (Session)** 是对事件的封装，包含了事件的所有信息以及触发事件的 Bot 实例。事件监听器的回调函数将会收到一个 Session 实例作为参数。
+
+## 构造函数
+
+### new Session(bot, event)
+
+* **bot:** [`Bot`](./bot.md) 机器人实例
+* **event:** `Partial<Event>` 事件数据
+
+创建一个新的会话实例。`selfId`, `platform` 和 `timestamp` 会自动从 Bot 中填充默认值。
+
+::: tip
+通常不需要手动构造 Session，而是通过 [`bot.session()`](./bot.md#bot-session-event) 创建。
+:::
+
+## 实例属性
+
+### session.sn
+
+* 类型: `number`
+
+会话的序列号，在当前上下文中唯一。
+
+### session.bot
+
+* 类型: [`Bot`](./bot.md)
+
+触发事件的 Bot 实例。
+
+### session.event
+
+* 类型: `Event`
+
+原始的事件对象，包含事件的全部信息。
+
+### session.locales
+
+* 类型: `string[]`
+
+当前会话的语言偏好列表。
+
+## 事件访问器
+
+以下属性是对 `session.event` 中字段的快捷访问，可读可写。
+
+### session.type
+
+* 类型: `string`
+
+事件类型，派生自 `event.type`。
+
+### session.selfId
+
+* 类型: `string`
+
+机器人的平台账号，派生自 `event.selfId`。
+
+### session.platform
+
+* 类型: `string`
+
+事件所属的平台名称，派生自 `event.platform`。
+
+### session.timestamp
+
+* 类型: `number`
+
+事件的时间戳，派生自 `event.timestamp`。
+
+### session.userId
+
+* 类型: `string`
+
+触发事件的用户 ID，派生自 `event.user.id`。
+
+### session.channelId
+
+* 类型: `string`
+
+事件所在的频道 ID，派生自 `event.channel.id`。
+
+### session.channelName
+
+* 类型: `string`
+
+事件所在的频道名称，派生自 `event.channel.name`。
+
+### session.guildId
+
+* 类型: `string`
+
+事件所在的群组 ID，派生自 `event.guild.id`。
+
+### session.guildName
+
+* 类型: `string`
+
+事件所在的群组名称，派生自 `event.guild.name`。
+
+### session.messageId
+
+* 类型: `string`
+
+事件关联的消息 ID，派生自 `event.message.id`。
+
+### session.operatorId
+
+* 类型: `string`
+
+事件的操作者 ID，派生自 `event.operator.id`。
+
+### session.roleId
+
+* 类型: `string`
+
+事件关联的角色 ID，派生自 `event.role.id`。
+
+### session.quote
+
+* 类型: [`Message`](../resources/message.md#def-message)
+
+引用的消息，派生自 `event.message.quote`。
+
+### session.referrer
+
+* 类型: `any`
+
+平台上下文信息，用于被动请求场景。派生自 `event.referrer`。
+
+## 计算属性
+
+### session.isDirect
+
+* 类型: `boolean`
+
+当前会话是否为私聊。当 `event.channel.type` 为 `DIRECT` 时返回 `true`。
+
+### session.content
+
+* 类型: `string`
+
+消息内容的字符串形式。读取时将 `event.message.elements` 序列化为字符串；设置时将字符串解析为消息元素，并自动提取 `quote` 元素。
+
+### session.elements
+
+* 类型: `Element[]`
+
+消息的元素数组，派生自 `event.message.elements`。
+
+### session.author
+
+## 实例方法
+
+### session.setInternal(type, data)
+
+* **type:** `string` 内部事件类型
+* **data:** `any` 内部事件数据
+
+设置内部事件信息。将 `_type` 和 `_data` 写入事件对象，并将 `data` 挂载到 `session[type]` 上。
+
+### session.transform(elements)
+
+* **elements:** `Element[]` 消息元素
+* 返回值: `Promise<Element[]>`
+
+对消息元素进行组件转换。递归地将自定义组件替换为其渲染结果。
+
+---
+
+---
+url: /advanced/meta.md
+---
+# 元信息 实验性
+
+::: warning
+这是一个实验性功能，可能在未来的版本中发生变化。
+:::
+
+元信息对象包含了与 SDK 状态相关、与具体的账号无关的信息，例如[代理路由](../advanced/resource.md#proxy-route)等。
+
+元信息通过以下方式获取和更新：
+
+* 在 WebSocket 推送方式下，`READY` 信令将提供完整的元信息；
+* 在 WebHook 推送方式下，应用启动时应当通过 API 获取元信息；
+* 应用启动后，持续接收 `META` 信令和登录事件对元信息进行更新。
+
+需要注意的是，`META` 信令不反映登录状态变化，也不会包含 `logins` 字段。
+
+元信息 API 通过 `/{version}/meta/{method}` 路由提供。通信方式与 [HTTP API](../protocol/api.md) 类似，但不需要 `Satori-Platform` 和 `Satori-User-ID` 请求头。
+
+## 类型定义
+
+### Meta
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `logins` | [`Login[]`](../resources/login.md) | 登录信息 |
+| `proxy_urls` | string\[] | [代理路由](../advanced/resource.md#proxy-route)列表 |
+
+## API
+
+### 获取元信息
+
+> POST`/meta` {.route}
+
+返回一个 [Meta](#meta) 对象。
+
+### 创建 WebHook 可选
+
+> POST`/meta/webhook.create` {.route}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `url` | string | WebHook 地址 |
+| `token` | string? | 鉴权令牌 |
+
+### 移除 WebHook 可选
+
+> POST`/meta/webhook.delete` {.route}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `url` | string | WebHook 地址 |
+
+---
+
+---
+url: /resources/friend.md
+---
+# 好友 (Friend)
+
+## 类型定义
+
+### Friend {#def-friend}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `user` | [User](./user.md#def-user)? | 用户对象 |
+| `nick` | string? | 好友昵称 |
+
+## API
+
+### 获取好友列表 {#api-friend-list}
+
+> POST `/friend.list` {.route}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `next` | string? | 分页令牌 |
+
+获取好友列表。返回一个 [Friend](#def-friend) 的[分页列表](../protocol/api.md#list)。
+
+### 删除好友 {#api-friend-delete}
+
+> POST `/friend.delete` {.route}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `user_id` | string | 用户 ID |
+
+删除好友。
+
+### 处理好友申请 {#api-friend-approve}
+
+> POST `/friend.approve` {.route}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `message_id` | string | 请求 ID |
+| `approve` | boolean | 是否通过请求 |
+| `comment` | string? | 备注信息 |
+
+处理好友申请。
+
+## 事件
+
+### friend-request
+
+接收到新的好友申请时触发。必需资源：[`user`](./user.md#def-user)。
+
+---
+
+---
+url: /protocol.md
+---
+# 总览
+
+Satori 协议的通信方式分为两块：
+
+* 一套基于 HTTP 的 API 服务，用于发送消息和调用其他功能；
+* 一套基于 WebSocket 或者 WebHook 的事件服务，用于接收消息和其他事件。
+
+## 核心概念
+
+在我们开始之前，先来了解一些与 Satori 相关的核心概念。
+
+**SDK** 是指实现了 Satori 协议的软件。**应用 (Application)** 是指接入了 Satori 协议的软件。应用通过与 SDK 通信，以实现聊天平台的功能。
+
+**平台 (Platform)** 是指聊天平台，比如 Discord、Telegram 等。同一平台内的用户间具有相互发送消息的能力，而不同平台的用户间则没有。对于 Rocket Chat 这一类可自建的聊天平台而言，每个独立的自建服务器都视为不同的平台。
+
+**消息 (Message)** 是字面意义上的消息。通常是文本或富文本格式的，有时也会包含图片、语音等媒体资源。在 Satori 中，消息通过消息元素进行统一编码。
+
+**频道 (Channel)** 是消息的集合。一个频道包含了具备时间、逻辑顺序的一系列消息。频道又分为私聊频道和群聊频道，其中私聊频道有且仅有两人参与，而群聊频道可以有任意多人参与。
+
+**群组 (Guild)** 是平台用户的集合。一个群组通常会同时包含一组用户和频道，并通过权限机制让其中的部分用户进行管理。在部分平台中，群组和群聊频道的概念恰好是重合的 (例如 QQ)：一个群组内有且仅有一个群聊频道。私聊频道不属于任何群组。
+
+## 可选字段
+
+由于不同平台实现的差异，Satori 协议中的大部分字段都是可选的。可选字段的类型后面会有一个 `?` 标记。
+
+对于任意可选字段，相关 API 调用的结果中可能不含该字段，也可能该字段的值为 `null`。其中，前者表示该 API 并未提供这一字段，但可能由其他 API 提供；后者表示该 API 提供了这一字段，但其值为 `null`。
+
+## 资源
+
+Satori 协议中的资源是指一类具有确定结构的对象。例如，[用户](../resources/user.md)、[频道](../resources/channel.md)、[消息](../resources/message.md)等都是资源。部分事件和 API 的返回值中会包含这些资源对象。
+
+资源对象的某个字段可以是另一个资源对象，例如消息对象中的 `user` 字段就是一个用户对象。当资源对象出现多级嵌套时，内层的资源将会被统一提升到最外层。例如，当接收到消息事件时，事件体中可以访问到 `message`, `member`, `user`, `channel` 等资源，但 `message` 中就不再存在 `member` 和 `user` 字段了。
+
+---
+
+---
+url: /sdk.md
+---
+# 总览
+
+Satori 提供了官方 TypeScript SDK，你可以使用它来开发跨平台的聊天应用。
+
+## 基本用法
+
+目前推荐的使用方式是在 [Koishi](https://koishi.chat) 框架中使用。
+
+## 核心概念
+
+### 机器人 (Bot)
+
+[Bot](./bot.md) 代表一个聊天平台上的账号。每个 Bot 实例封装了与平台通信的能力，并提供了统一的 API 用于发送消息、管理群组等操作。
+
+### 适配器 (Adapter)
+
+[Adapter](./adapter.md) 负责将特定平台的通信方式转换为 Satori 协议。每个适配器管理一个或多个 Bot 实例，处理与平台之间的连接和事件分发。
+
+### 会话 (Session)
+
+[Session](./session.md) 是对事件的封装，包含了事件的所有信息以及触发事件的 Bot 实例。你可以通过 Session 获取事件的详细信息，也可以通过它来回复消息。
+
+## 事件
+
+你可以通过 `ctx.on()` 监听 Satori 协议中定义的各种事件：
+
+```ts
+// 消息事件
+ctx.on('message-created', (session) => {})
+ctx.on('message-updated', (session) => {})
+ctx.on('message-deleted', (session) => {})
+
+// 群组事件
+ctx.on('guild-added', (session) => {})
+ctx.on('guild-updated', (session) => {})
+ctx.on('guild-removed', (session) => {})
+
+// 成员事件
+ctx.on('guild-member-added', (session) => {})
+ctx.on('guild-member-updated', (session) => {})
+ctx.on('guild-member-removed', (session) => {})
+
+// 登录事件
+ctx.on('login-added', (session) => {})
+ctx.on('login-removed', (session) => {})
+ctx.on('login-updated', (session) => {})
+```
+
+完整的事件列表请参考 [协议文档](../protocol/events.md)。
+
+## 消息元素
+
+Satori 使用类 HTML 的消息元素来编码消息内容。你可以使用 `h` 函数来构造消息元素：
+
+```ts
+import { h } from '@satorijs/core'
+
+// 文本消息
+h.text('Hello, World!')
+
+// 提及用户
+h.at(userId)
+
+// 图片
+h.image(url)
+
+// 组合多个元素
+const content = h('', [
+  h.text('Hello, '),
+  h.at(userId),
+  h.text('!'),
+])
+```
+
+详细的消息元素列表请参考 [标准元素](../protocol/elements.md)。
+
+---
+
+---
+url: /sdk/bot.md
+---
+# 机器人 (Bot)
+
+**机器人 (Bot)** 是 SDK 的核心，它将不同平台的 API 封装成统一的格式。而不同的适配器也可以自行扩展 Bot 实例上的属性和方法。
+
+标有 抽象 的方法需要由适配器插件自行实现。
+
+## 构造函数
+
+### new Bot(ctx, config, platform)
+
+* **ctx:** `Context` 上下文实例
+* **config:** `object` 适配器配置
+* **platform:** `string` 适配器名称
+
+## 实例属性
+
+### bot.ctx
+
+* 类型: `Context`
+
+当前 Bot 所在的上下文实例。
+
+### bot.config
+
+* 类型: `object`
+
+构造 Bot 实例时所使用的配置项。
+
+### bot.adapter
+
+* 类型: [`Adapter`](./adapter.md)
+
+当前 Bot 所在的 [Adapter](./adapter.md) 实例。
+
+### bot.platform
+
+* 类型: `string`
+
+当前 Bot 的平台名称。
+
+### bot.selfId
+
+* 类型: `string`
+
+当前 Bot 的平台账号。派生自 `bot.user.id`。
+
+### bot.user
+
+* 类型: [`User`](../resources/user.md#def-user)
+
+当前 Bot 的用户信息。
+
+### bot.status
+
+* 类型: [`Status`](../resources/login.md#def-login-status)
+
+当前 Bot 的登录状态。设置此属性时将自动触发 `login-updated` 事件。
+
+### bot.isActive
+
+* 类型: `boolean`
+
+当前 Bot 是否处于活跃状态。当 `status` 为 `OFFLINE` 或 `DISCONNECT` 时返回 `false`，否则返回 `true`。
+
+### bot.internal
+
+* 类型: `object`
+
+当前机器人的内部接口，用于访问平台原生 API。
+
+### bot.features
+
+* 类型: `string[]`
+
+当前 Bot 支持的 API 方法列表。
+
+### bot.hidden
+
+* 类型: `boolean`
+
+当前 Bot 是否隐藏。
+
+## 生命周期
+
+### bot.start()
+
+* 返回值: `Promise<void>`
+
+启动机器人。将状态设置为 `CONNECT` 后调用 `adapter.connect()`。如果连接失败，将自动调用 `bot.offline()` 记录错误。
+
+这个方法会在上下文就绪时自动被调用，通常你不需要手动调用它。
+
+### bot.stop()
+
+* 返回值: `Promise<void>`
+
+停止机器人的运行。将状态设置为 `DISCONNECT` 后调用 `adapter.disconnect()`，最后调用 `bot.offline()`。
+
+这个方法会在上下文被释放时自动被调用，通常你不需要手动调用它。
+
+### bot.online()
+
+修改机器人的状态为 `ONLINE`，并清除错误信息。
+
+### bot.offline(error?)
+
+* **error:** `Error` 错误信息
+
+修改机器人的状态为 `OFFLINE`，并记录错误信息。
+
+### bot.dispose()
+
+移除机器人实例。从 `ctx.bots` 中移除自身并触发 `login-removed` 事件。
+
+## 会话与事件
+
+### bot.session(event?)
+
+* **event:** `Partial<Event>` 事件数据
+* 返回值: `Session`
+
+创建一个新的会话实例。会自动填充 `platform` 和 `selfId` 字段。
+
+### bot.dispatch(session)
+
+* **session:** `Session` 会话实例
+
+触发一个会话事件。会话将通过上下文的事件系统进行分发。
+
+### bot.update(login)
+
+* **login:** [`Login`](../resources/login.md#def-login) 登录信息
+
+使用 Login 对象批量更新 Bot 属性。`status` 属性将最后被设置，以确保 `login-updated` 事件在所有属性更新后触发。
+
+## 通用 API
+
+通用 API 由适配器实现。它们会在相应的资源页面中介绍。
+
+* [`bot.createMessage()`](../resources/message.md#api-message-create)
+* [`bot.createUpload()`](../advanced/resource.md#api-upload-create)
+* [`bot.createDirectChannel()`](../resources/channel.md#api-user-channel-create)
+* [`bot.createChannel()`](../resources/channel.md#api-channel-create)
+* [`bot.getChannel()`](../resources/channel.md#api-channel-get)
+* [`bot.getChannelList()`](../resources/channel.md#api-channel-list)
+* [`bot.getChannelIter()`](../resources/channel.md#api-channel-list)
+* [`bot.updateChannel()`](../resources/channel.md#api-channel-update)
+* [`bot.deleteChannel()`](../resources/channel.md#api-channel-delete)
+* [`bot.muteChannel()`](../resources/channel.md#api-channel-mute)
+* [`bot.getMessage()`](../resources/message.md#api-message-get)
+* [`bot.getMessageList()`](../resources/message.md#api-message-list)
+* [`bot.getMessageIter()`](../resources/message.md#api-message-list)
+* [`bot.editMessage()`](../resources/message.md#api-message-update)
+* [`bot.deleteMessage()`](../resources/message.md#api-message-delete)
+* [`bot.createReaction()`](../resources/reaction.md#api-reaction-create)
+* [`bot.deleteReaction()`](../resources/reaction.md#api-reaction-delete)
+* [`bot.clearReaction()`](../resources/reaction.md#api-reaction-clear)
+* [`bot.getReactionList()`](../resources/reaction.md#api-reaction-list)
+* [`bot.getReactionIter()`](../resources/reaction.md#api-reaction-list)
+* [`bot.getLogin()`](../resources/login.md#api-login-get)
+* [`bot.getUser()`](../resources/user.md#api-user-get)
+* [`bot.getFriendList()`](../resources/friend.md#api-friend-list)
+* [`bot.getFriendIter()`](../resources/friend.md#api-friend-list)
+* [`bot.deleteFriend()`](../resources/friend.md#api-friend-delete)
+* [`bot.handleFriendRequest()`](../resources/friend.md#api-friend-approve)
+* [`bot.getGuild()`](../resources/guild.md#api-guild-get)
+* [`bot.getGuildList()`](../resources/guild.md#api-guild-list)
+* [`bot.getGuildIter()`](../resources/guild.md#api-guild-list)
+* [`bot.handleGuildRequest()`](../resources/guild.md#api-guild-approve)
+* [`bot.getGuildMember()`](../resources/member.md#api-guild-member-get)
+* [`bot.getGuildMemberList()`](../resources/member.md#api-guild-member-list)
+* [`bot.getGuildMemberIter()`](../resources/member.md#api-guild-member-list)
+* [`bot.kickGuildMember()`](../resources/member.md#api-guild-member-kick)
+* [`bot.muteGuildMember()`](../resources/member.md#api-guild-member-mute)
+* [`bot.handleGuildMemberRequest()`](../resources/member.md#api-guild-member-approve)
+* [`bot.setGuildMemberRole()`](../resources/role.md#api-guild-member-role-set)
+* [`bot.unsetGuildMemberRole()`](../resources/role.md#api-guild-member-role-unset)
+* [`bot.getGuildRoleList()`](../resources/role.md#api-guild-role-list)
+* [`bot.getGuildRoleIter()`](../resources/role.md#api-guild-role-list)
+* [`bot.createGuildRole()`](../resources/role.md#api-guild-role-create)
+* [`bot.updateGuildRole()`](../resources/role.md#api-guild-role-update)
+* [`bot.deleteGuildRole()`](../resources/role.md#api-guild-role-delete)
+
+其中 `*Iter()` 方法是 `*List()` 方法的迭代器版本，返回一个 `AsyncIterable` 对象，会自动处理分页。
+
+## 内部路由
+
+### bot.defineInternalRoute(path, callback)
+
+* **path:** `string` 路由路径
+* **callback:** `(request) => Promise<Response>` 路由处理函数
+* 返回值: `() => void`
+
+定义一个内部 API 路由。路径支持参数匹配，例如 `/foo/:bar`。返回一个用于取消注册的函数。
+
+### bot.getInternalUrl(path, init?, slash?)
+
+* **path:** `string` 路径
+* **init:** `URLSearchParams | Record<string, any>` 查询参数
+* **slash:** `boolean` 是否使用斜杠格式
+* 返回值: `string`
+
+构建内部 URL。默认格式为 `internal:{platform}/{selfId}{path}`，如果 `slash` 为 `true` 则使用 `internal/{platform}/{selfId}{path}`。
+
+---
+
+---
+url: /protocol/elements.md
+---
+# 标准元素
+
+## 基础元素
+
+基本元素是最常见的消息元素，它们能够在大多数平台上正常显示，是组成消息的基本单位。
+
+### 提及用户 (at) {#at}
+
+| 属性 | 类型 | 范围 | 描述 |
+| --- | --- | --- | --- |
+| `id` | string? | 收发 | 目标用户的 ID |
+| `name` | string? | 收发 | 目标用户的名称 |
+| `role` | string? | 收发 | 目标角色 |
+| `type` | string? | 收发 | 特殊操作，例如 all 表示 @全体成员，here 表示 @在线成员 |
+
+`<at>` 元素用于提及某个或某些用户。
+
+### 提及频道 (sharp) {#sharp}
+
+| 属性 | 类型 | 范围 | 描述 |
+| --- | --- | --- | --- |
+| `id` | string | 收发 | 目标频道的 ID |
+| `name` | string? | 收发 | 目标频道的名称 |
+
+`<sharp>` 元素用于提及某个频道。
+
+### 表情 (emoji) {#emoji}
+
+| 属性 | 类型 | 范围 | 描述 |
+| --- | --- | --- | --- |
+| `id` | string? | 收发 | 表情的 ID |
+| `name` | string? | 收发 | 表情的名称 |
+
+`<emoji>` 元素用于显示某个表情。
+
+### 链接 (a) {#a}
+
+| 属性 | 类型 | 范围 | 描述 |
+| --- | --- | --- | --- |
+| `href` | string | 收发 | 链接的 URL |
+
+`<a>` 元素用于显示一个链接。当平台不支持链接时，建议显示为 `content (href)` 的形式。
+
+## 资源元素
+
+资源消息元素表示文本中存在的资源文件。不同的平台对资源文件的支持存在较大的差异。发送时只需提供 `src`。如果某个平台不支持特定的资源类型，适配器应该用 `src` 代替。如果某个平台不支持将资源消息元素和其他消息元素同时发送，适配器应该分多条发送。
+
+| 属性 | 类型 | 范围 | 描述 |
+| --- | --- | --- | --- |
+| `src` | string | 收发 | 资源的 URL |
+| `title` | string? | 收发 | 资源文件名称 |
+| `cache` 实验性 | boolean? | 发 | 是否使用已缓存的文件 |
+| `timeout` 实验性 | number? | 发 | 下载文件的最长时间 (毫秒) |
+
+### 图片 (img) {#img}
+
+除了上述通用属性外，还支持下面的属性：
+
+| 属性 | 类型 | 范围 | 描述 |
+| --- | --- | --- | --- |
+| `width` | number? | 收 | 图片宽度 (像素) |
+| `height` | number? | 收 | 图片高度 (像素) |
+
+`<img>` 元素用于表示图片。
+
+### 音频 (audio) {#audio}
+
+除了上述通用属性外，还支持下面的属性：
+
+| 属性 | 类型 | 范围 | 描述 |
+| --- | --- | --- | --- |
+| `duration` | number? | 收发 | 音频长度 (秒) |
+| `poster` | string? | 收发 | 音频封面 URL |
+
+`<audio>` 元素用于表示语音。
+
+### 视频 (video) {#video}
+
+除了上述通用属性外，还支持下面的属性：
+
+| 属性 | 类型 | 范围 | 描述 |
+| --- | --- | --- | --- |
+| `width` | number? | 收 | 视频宽度 (像素) |
+| `height` | number? | 收 | 视频高度 (像素) |
+| `duration` | number? | 收 | 视频长度 (秒) |
+| `poster` | string? | 收发 | 视频封面 URL |
+
+`<video>` 元素用于表示视频。
+
+### 文件 (file) {#file}
+
+除了上述通用属性外，还支持下面的属性：
+
+| 属性 | 类型 | 范围 | 描述 |
+| --- | --- | --- | --- |
+| `poster` | string? | 收发 | 缩略图 URL |
+
+`<file>` 元素用于表示文件。
+
+## 修饰元素
+
+修饰元素用于修饰其中的内容。如果对应的平台不支持对应的元素，可以忽略这个元素本身，正常渲染其中的子元素。
+
+### 粗体 (b, strong) {#b}
+
+`<b>` 或 `<strong>` 元素用于将其中的内容以粗体显示。
+
+### 斜体 (i, em) {#i}
+
+`<i>` 或 `<em>` 元素用于将其中的内容以斜体显示。
+
+### 下划线 (u, ins) {#u}
+
+`<u>` 或 `<ins>` 元素用于为其中的内容附加下划线。
+
+### 删除线 (s, del) {#s}
+
+`<s>` 或 `<del>` 元素用于为其中的内容附加删除线。
+
+### 剧透 (spl) {#spl}
+
+`<spl>` 元素用于将其中的内容标记为剧透 (默认会被隐藏，点击后才显示)。
+
+### 代码 (code) {#code}
+
+`<code>` 元素用于将其中的内容以等宽字体显示 (通常还会有特定的背景色)。
+
+### 上标 (sup) {#sup}
+
+`<sup>` 元素用于将其中的内容以上标显示。
+
+### 下标 (sub) {#sub}
+
+`<sub>` 元素用于将其中的内容以下标显示。
+
+## 排版元素
+
+### 换行 (br) {#br}
+
+`<br>` 元素表示一个独立的换行。
+
+### 段落 (p) {#p}
+
+`<p>` 元素表示一个段落。在渲染时，它与相邻的元素之间会确保有一个换行。
+
+### 消息 (message) {#message}
+
+| 属性 | 类型 | 范围 | 描述 |
+| --- | --- | --- | --- |
+| `id` | string? | 发 | 消息的 ID |
+| `forward` | boolean? | 发 | 是否为转发消息 |
+
+`<message>` 元素的基本用法是表示一条消息。子元素对应于消息的内容。如果其没有子元素，则消息不会被发送。
+
+当出现 `<message>` 元素时，之前的元素会被立即视为一条消息被发送。因此下面的两种写法是等价的：
+
+```html
+<!-- 第一种写法：发送两条消息 -->
+<message>hello</message>
+<message>world</message>
+
+<!-- 第二种写法：用一条空消息隔开两段文本，实际上仍然会发送两条消息 -->
+hello<message/>world
+```
+
+部分平台允许你模拟其他用户发送消息：
+
+```html
+<message>
+  <author id="123123123" name="Alice" avatar="url"/>
+  hello world
+</message>
+```
+
+在支持转发的平台上，你可以使用 `forward` 配合 `id` 属性来转发一条消息：
+
+```html
+<message id="123456789" forward/>
+```
+
+在支持合并转发的平台上，你可以使用带有 `forward` 属性的 `<message>` 元素嵌套其他 `<message>` 元素来实现合并转发：
+
+```html
+<message forward>
+  <message id="123456789"/>
+  <message id="987654321"/>
+  <!-- 合并转发里也可以嵌套模拟其他用户发送的消息 -->
+  <message>
+    <author id="123123123" name="Alice" avatar="url"/>
+    hello world
+  </message>
+</message>
+```
+
+## 元信息元素
+
+元信息元素通常不会被渲染，但会影响到消息的发送行为。
+
+### 引用 (quote) {#quote}
+
+`<quote>` 元素用于表示对消息引用。它的子元素会被渲染为引用的内容。理论上所有 `<message>` 元素的特性也可以用于 `<quote>` 元素，包括子元素 (构造引用消息) 和 `forward` 属性 (引用合并转发)。然而目前似乎并没有平台提供了这样的支持。
+
+### 作者 (author) {#author}
+
+| 属性 | 类型 | 范围 | 描述 |
+| --- | --- | --- | --- |
+| `id` | string? | 发 | 用户 ID |
+| `name` | string? | 发 | 昵称 |
+| `avatar` | string? | 发 | 头像 URL |
+
+`<author>` 元素用于表示消息的作者。它的子元素会被渲染为作者的名字。
+
+## 交互元素
+
+交互元素用于显然消息中的可交互性内容。如果平台不支持此类元素且难以提供回退，可以直接忽略整个元素。实现侧应当根据平台特性，针对性地返回带有交互和不带有交互的消息。
+
+### 按钮 (button) 实验性 {#button}
+
+| 属性 | 类型 | 范围 | 描述 |
+| --- | --- | --- | --- |
+| `id` | string? | 发 | 按钮的 ID |
+| `type` | string? | 发 | 按钮的类型 |
+| `href` | string? | 发 | 按钮的链接 |
+| `text` | string? | 发 | 待输入文本 |
+| `theme` | string? | 发 | 按钮的样式 |
+
+`<button>` 元素用于表示一个按钮。它的子元素会被渲染为按钮的文本。
+
+按钮目前支持三种不同的类型：
+
+* 点击 `action` 类型的按钮时会触发一个 `interaction/button` 事件，该事件的 `button` 资源会包含上述 `id`。
+* 点击 `link` 类型的按钮时会打开一个链接，该链接的地址为上述 `href`。
+* 点击 `input` 类型的按钮时会在用户的输入框中填充上述 `text`。
+
+`theme` 仅建议使用下列值：
+
+* `primary`
+* `secondary`
+* `success`
+* `warning`
+* `danger`
+* `info`
+
+---
+
+---
+url: /advanced/bridge.md
+---
+# 桥接
+
+::: danger
+此文档在施工中，敬请期待。
+:::
+
+---
+
+---
+url: /resources/message.md
+---
+# 消息 (Message)
+
+## 类型定义
+
+### Message {#def-message}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `id` | string | 消息 ID |
+| `content` | string? | 消息内容 |
+| `channel` | [Channel](./channel.md#def-channel)? | 频道对象 |
+| `guild` | [Guild](./guild.md#def-guild)? | 群组对象 |
+| `member` | [Member](./member.md#def-member)? | 群组成员对象 |
+| `user` | [User](./user.md#def-user)? | 用户对象 |
+| `created_at` | number? | 消息发送的时间戳 |
+| `updated_at` | number? | 消息修改的时间戳 |
+
+## API
+
+### 发送消息 {#api-message-create}
+
+> POST `/message.create` {.route}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `channel_id` | string | 频道 ID |
+| `content` | string | 消息内容 |
+
+发送消息。返回一个 [`Message`](#def-message) 对象构成的数组。
+
+### 获取消息 {#api-message-get}
+
+> POST `/message.get` {.route}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `channel_id` | string | 频道 ID |
+| `message_id` | string | 消息 ID |
+
+获取特定消息。返回一个 [`Message`](#def-message) 对象。必需资源：[`channel`](./channel.md#def-channel)，[`user`](./user.md#def-user)。
+
+### 撤回消息 {#api-message-delete}
+
+> POST `/message.delete` {.route}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `channel_id` | string | 频道 ID |
+| `message_id` | string | 消息 ID |
+
+撤回特定消息。
+
+### 编辑消息 {#api-message-update}
+
+> POST `/message.update` {.route}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `channel_id` | string | 频道 ID |
+| `message_id` | string | 消息 ID |
+| `content` | string | 消息内容 |
+
+编辑特定消息。
+
+### 获取消息列表 {#api-message-list}
+
+> POST `/message.list` {.route}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `channel_id` | string | 频道 ID |
+| `next` | string? | 分页令牌 |
+| `direction` | [Direction](../protocol/api.md#bidi-list)? | 查询方向 |
+| `limit` | number? | 消息数量限制 |
+| `order` | [Order](../protocol/api.md#bidi-list)? | 对结果排序 |
+
+获取频道消息列表。返回一个 [`Message`](#def-message) 的[双向分页列表](../protocol/api.md#bidi-list)。必需资源：[`user`](./user.md#def-user)。
+
+* `next` 参数默认值为空，表示从最新消息开始查询。此时 `direction` 参数只能为 `before`。
+* `direction` 参数默认为 `before`。
+* `order` 参数默认为 `asc` (无论查询方向)。
+* `limit` 参数的默认值与平台默认值保持一致。如果平台 API 没有设定默认值，则可以自行设定，推荐值为 50。如果用户传入值超出平台要求的上限，则应当改为使用平台的上限值，而不是返回错误。开发者应当使用返回值中 `prev` 或 `next` 的存在性判断是否有更多数据，而非依赖于返回值中 `data` 的长度。
+
+## 事件
+
+### message-created
+
+当消息被创建时触发。必需资源：[`channel`](./channel.md#def-channel)，[`message`](#def-message)，[`user`](./user.md#def-user)。
+
+### message-updated
+
+当消息被编辑时触发。必需资源：[`channel`](./channel.md#def-channel)，[`message`](#def-message)，[`user`](./user.md#def-user)。
+
+### message-deleted
+
+当消息被删除时触发。必需资源：[`channel`](./channel.md#def-channel)，[`message`](#def-message)，[`user`](./user.md#def-user)。
+
+---
+
+---
+url: /protocol/message.md
+---
+# 消息编码
+
+Satori 中的消息使用 **消息元素 (Message Element)** 进行编码。
+
+## 语法
+
+消息元素的语法与 XHTML 类似，但是不完全相同。
+
+### 字符
+
+你可以在消息元素内使用任何字符。不过部分特殊字符需要转义：
+
+| 原始字符 | 转义写法 |
+| :---: | :---: |
+| `"` | `&quot;` |
+| `&` | `&amp;` |
+| `<` | `&lt;` |
+| `>` | `&gt;` |
+
+根据上下文的不同，有些字符可能不需要被转义或使用其他的转义方式。
+
+除此以外，你可以使用十进制或十六进制转义任何字符。例如 `'` 也可以被书写成 `&#39;` 或 `&#x27;`。
+
+### 标签
+
+使用一对尖括号包裹元素名，加上可选的属性、闭合指示符，就构成了一个标签。
+
+元素名由小写字母、数字和连字符组成，且必须以字母开头。在元素名前后添加 `/` 表示这是一个结束标签或自闭合标签，没有 `/` 符号时则表示这是一个起始标签：
+
+* `<tag>` 一个起始标签
+* `</tag>` 一个结束标签
+* `<tag/>` 一个自闭合标签
+
+### 属性
+
+起始或自闭合标签的元素名后接受可选的属性列表。每个属性必须形如以下形式：
+
+* `key`
+* `key="value"` (此时 `value` 中的 `"` 需要被转义)
+* `key='value'` (此时 `value` 中的 `'` 需要被转义)
+
+下面是一段示例：
+
+```html
+<tag foo="1" bar/>
+```
+
+### 元素
+
+一个元素要么是自闭合标签，要么由一对同名的起始标签和结束标签构成。元素的内容指起始标签和结束标签中间的部分，可以包含文本内容或其他元素。对于自闭合标签，元素的内容为空。下面是一段示例：
+
+```html
+<parent>
+  text content
+  <child/>
+</parent>
+```
+
+当存在未配对的元素时，将自动视为文本内容的一部分。文本内容前后如果存在包含换行符的连续空白字符，则会被忽略。这意味着下面两段代码是等价的：
+
+```html
+<tag>
+  <foo> bar
+  <!-- comment -->
+</tag>
+```
+
+```html
+<tag>&lt;foo&gt; bar</tag>
+```
+
+### 注释
+
+使用成对的 `<!--` 和 `-->` 插入一段注释。注释中的部分不会被渲染。
+
+## 标准元素
+
+关于 Satori 内置的消息元素，请参考[标准元素](./elements.md)。
+
+---
+
+---
+url: /resources/user.md
+---
+# 用户 (User)
+
+## 类型定义
+
+### User {#def-user}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `id` | string | 用户 ID |
+| `name` | string? | 用户名称[\[1\]](#name-nick) |
+| `nick` | string? | 用户昵称[\[1\]](#name-nick) |
+| `avatar` | string? | 用户头像链接 |
+| `is_bot` | boolean? | 是否为机器人 |
+
+::: tip
+**\[1] `name` 和 `nick` 字段的区别** {#name-nick}
+
+这两个字段都可以用于标识用户。在一些平台上 (例如 Telegram)，一个用户存在多种不同概念的名称，因此 SDK 可以同时设置这两个字段。而另一些平台可能不存在这两个概念的对立关系，此时 SDK 只需要根据语义设置 `name` 或 `nick` 中的一个即可。
+
+在应用层实现上，`nick` 的优先级高于 `name`，因为昵称更容易被用户识别和理解。如果你正在开发基于 Satori 协议的客户端，在用户名的显示上应当优先使用 `nick` 字段，只有当 `nick` 为空时才使用 `name` 字段。
+:::
+
+## API
+
+### 获取用户信息 {#api-user-get}
+
+> POST `/user.get` {.route}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `user_id` | string | 用户 ID |
+
+获取用户信息。返回一个 [`User`](#def-user) 对象。
+
+---
+
+---
+url: /resources/login.md
+---
+# 登录信息 (Login)
+
+## 类型定义
+
+### Login {#def-login}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `sn` | number | 序列号[\[1\]](#login-sn) 实验性 |
+| `platform` | string?[\[3\]](#login-nullable) | 平台名称 |
+| `user` | [User](./user.md)?[\[3\]](#login-nullable) | 用户对象[\[2\]](#login-user) |
+| `status` | [LoginStatus](#def-login-status) | 登录状态 |
+| `adapter` | string | [适配器名称](../advanced/internal.md#platform-vs-adapter) 实验性 |
+| `features` | string\[]? | [平台特性](../protocol/api.md#platform-features)列表 实验性 |
+
+::: tip
+\[1] `login.sn` 仅用于标识 Login 对象，与平台逻辑无关 (意味着任何平台相关的 API 调用都不需要传入这个 `sn`)，也不进行持久化 (意味着两次连接中同一个登录号的 `sn` 可能是不同的，不同登录号的 `sn` 可能是相同的)。请尤其注意与 `login.user.id` 区分。 {#login-sn}
+:::
+
+::: tip
+\[2] `login.user` 并不一定是真实存在的平台用户，也可以是平台分配的机器人或者应用身份。 {#login-user}
+:::
+
+::: tip
+\[3] 当 `login.status` 不为 `ONLINE` 时，`platform` 和 `user` 可能为空。但实际上，所有的非登录事件中均确保 `login` 处于 `ONLINE` 状态，因此 `platform` 和 `user` 总是有值的。从 SDK 开发的角度，为登录事件和非登录事件提供不同的类型是比较好的做法。 {#login-nullable}
+:::
+
+### LoginStatus {##def-login-status}
+
+| 名称 | 值 | 描述 |
+| --- | --- | --- |
+| `OFFLINE` | 0 | 离线 |
+| `ONLINE` | 1 | 在线 |
+| `CONNECT` | 2 | 正在连接 |
+| `DISCONNECT` | 3 | 正在断开连接 |
+| `RECONNECT` | 4 | 正在重新连接 |
+
+## API
+
+### 获取登录信息 {#api-login-get}
+
+> POST `/login.get` {.route}
+
+获取登录信息。返回一个 [`Login`](#def-login) 对象。
+
+## 事件
+
+### login-added
+
+登录被创建时触发。必需资源：[`login`](#def-login)。
+
+### login-removed
+
+登录被删除时触发。必需资源：[`login`](#def-login)。
+
+### login-updated
+
+登录信息更新时触发。必需资源：[`login`](#def-login)。
+
+---
+
+---
+url: /resources/guild.md
+---
+# 群组 (Guild)
+
+## 类型定义
+
+### Guild {#def-guild}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `id` | string | 群组 ID |
+| `name` | string? | 群组名称 |
+| `avatar` | string? | 群组头像 |
+
+## API
+
+### 获取群组 {#api-guild-get}
+
+> POST `/guild.get` {.route}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `guild_id` | string | 群组 ID |
+
+根据 ID 获取。返回一个 [Guild](#def-guild) 对象。
+
+### 获取群组列表 {#api-guild-list}
+
+> POST `/guild.list` {.route}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `next` | string? | 分页令牌 |
+
+获取当前用户加入的全部群组。返回一个 [Guild](#def-guild) 的[分页列表](../protocol/api.md#list)。
+
+### 处理群组邀请 {#api-guild-approve}
+
+> POST `/guild.approve` {.route}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `message_id` | string | 请求 ID |
+| `approve` | boolean | 是否通过请求 |
+| `comment` | string? | 备注信息 |
+
+处理来自群组的邀请。
+
+## 事件
+
+### guild-added
+
+群组被创建或变得对 SDK 可见时触发。必需资源：[`guild`](#def-guild)。
+
+### guild-updated
+
+群组信息更新时触发。必需资源：[`guild`](#def-guild)。
+
+### guild-removed
+
+群组被删除或变得对 SDK 不可见时触发。必需资源：[`guild`](#def-guild)。
+
+### guild-request
+
+接收到新的入群邀请时触发。必需资源：[`guild`](#def-guild)。
+
+---
+
+---
+url: /resources/member.md
+---
+# 群组成员 (GuildMember)
+
+## 类型定义
+
+### GuildMember {#def-guild-member}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `user` | [User](./user.md#def-user)? | 用户对象 |
+| `nick` | string? | 用户在群组中的名称 |
+| `avatar` | string? | 用户在群组中的头像 |
+| `joined_at` | number? | 加入时间 |
+| `roles` | [GuildRole](./role.md#def-guild-role)\[]? | 成员的角色列表 |
+
+## API
+
+### 获取群组成员 {#api-guild-member-get}
+
+> POST `/guild.member.get` {.route}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `guild_id` | string | 群组 ID |
+| `user_id` | string | 用户 ID |
+
+获取群成员信息。返回一个 [GuildMember](#def-guild-member) 对象。
+
+### 获取群组成员列表 {#api-guild-member-list}
+
+> POST `/guild.member.list` {.route}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `guild_id` | string | 群组 ID |
+| `next` | string? | 分页令牌 |
+
+获取群成员列表。返回一个 [GuildMember](#def-guild-member) 的[分页列表](../protocol/api.md#list)。
+
+### 踢出群组成员 {#api-guild-member-kick}
+
+> POST `/guild.member.kick` {.route}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `guild_id` | string | 群组 ID |
+| `user_id` | string | 用户 ID |
+| `permanent` | boolean? | 是否永久踢出 (无法再次加入群组) |
+
+将某个用户踢出群组。
+
+### 禁言群组成员 实验性 {#api-guild-member-mute}
+
+> POST `/guild.member.mute` {.route}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `guild_id` | string | 群组 ID |
+| `user_id` | string | 用户 ID |
+| `duration` | number | 禁言时长 (毫秒) |
+
+将某个用户禁言。如果传入的禁言时长为 `0` 则表示解除禁言。
+
+### 通过群组成员申请 {#api-guild-member-approve}
+
+> POST `/guild.member.approve` {.route}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `message_id` | string | 请求 ID |
+| `approve` | boolean | 是否通过请求 |
+| `comment` | string? | 备注信息 |
+
+处理加群请求。
+
+## 事件
+
+### guild-member-added
+
+群组成员增加时触发。必需资源：[`guild`](./guild.md#def-guild)，[`member`](#def-guild-member)，[`user`](./user.md#def-user)。
+
+### guild-member-updated
+
+群组成员信息更新时触发。必需资源：[`guild`](./guild.md#def-guild)，[`member`](#def-guild-member)，[`user`](./user.md#def-user)。
+
+### guild-member-removed
+
+群组成员移除时触发。必需资源：[`guild`](./guild.md#def-guild)，[`member`](#def-guild-member)，[`user`](./user.md#def-user)。
+
+### guild-member-request
+
+接收到新的加群请求时触发。必需资源：[`guild`](./guild.md#def-guild)，[`member`](#def-guild-member)，[`user`](./user.md#def-user)。
+
+---
+
+---
+url: /resources/role.md
+---
+# 群组角色 (GuildRole)
+
+## 类型定义
+
+### GuildRole {#def-guild-role}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `id` | string | 角色 ID |
+| `name` | string? | 角色名称 |
+
+## API
+
+### 设置群组成员角色 {#api-guild-member-role-set}
+
+> POST `/guild.member.role.set` {.route}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `guild_id` | string | 群组 ID |
+| `user_id` | string | 用户 ID |
+| `role_id` | string | 角色 ID |
+
+设置群组内用户的角色。
+
+### 取消群组成员角色 {#api-guild-member-role-unset}
+
+> POST `/guild.member.role.unset` {.route}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `guild_id` | string | 群组 ID |
+| `user_id` | string | 用户 ID |
+| `role_id` | string | 角色 ID |
+
+取消群组内用户的角色。
+
+### 获取群组角色列表 {#api-guild-role-list}
+
+> POST `/guild.role.list` {.route}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `guild_id` | string | 群组 ID |
+| `next` | string? | 分页令牌 |
+
+获取群组角色列表。返回一个 [GuildRole](#def-guild-role) 的[分页列表](../protocol/api.md#list)。
+
+### 创建群组角色 {#api-guild-role-create}
+
+> POST `/guild.role.create` {.route}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `guild_id` | string | 群组 ID |
+| `role` | [GuildRole](#def-guild-role) | 角色数据 |
+
+创建群组角色。返回一个 [GuildRole](#def-guild-role) 对象。
+
+### 修改群组角色 {#api-guild-role-update}
+
+> POST `/guild.role.update` {.route}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `guild_id` | string | 群组 ID |
+| `role_id` | string | 角色 ID |
+| `role` | [GuildRole](#def-guild-role) | 角色数据 |
+
+修改群组角色。
+
+### 删除群组角色 {#api-guild-role-delete}
+
+> POST `/guild.role.delete` {.route}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `guild_id` | string | 群组 ID |
+| `role_id` | string | 角色 ID |
+
+删除群组角色。
+
+## 事件
+
+### guild-role-created
+
+群组角色被创建时触发。必需资源：[`guild`](./guild.md#def-guild)，[`role`](#def-guild-role)。
+
+### guild-role-updated
+
+群组角色被修改时触发。必需资源：[`guild`](./guild.md#def-guild)，[`role`](#def-guild-role)。
+
+### guild-role-deleted
+
+群组角色被删除时触发。必需资源：[`guild`](./guild.md#def-guild)，[`role`](#def-guild-role)。
+
+---
+
+---
+url: /resources/reaction.md
+---
+# 表态 (Reaction) 实验性
+
+## API
+
+### 添加表态 {#api-reaction-create}
+
+> POST `/reaction.create` {.route}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `channel_id` | string | 频道 ID |
+| `message_id` | string | 消息 ID |
+| `emoji_id` | string | 表情 ID |
+
+向特定消息添加表态。
+
+### 删除表态 {#api-reaction-delete}
+
+> POST `/reaction.delete` {.route}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `channel_id` | string | 频道 ID |
+| `message_id` | string | 消息 ID |
+| `emoji_id` | string | 表情 ID |
+| `user_id` | string? | 用户 ID |
+
+从特定消息删除某个用户添加的特定表态。如果没有传入用户 ID 则表示删除自己的表态。
+
+### 清除表态 {#api-reaction-clear}
+
+> POST `/reaction.clear` {.route}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `channel_id` | string | 频道 ID |
+| `message_id` | string | 消息 ID |
+| `emoji_id` | string? | 表情 ID |
+
+从特定消息清除某个特定表态。如果没有传入表态名称则表示清除所有表态。
+
+### 获取表态列表 {#api-reaction-list}
+
+> POST `/reaction.list` {.route}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `channel_id` | string | 频道 ID |
+| `message_id` | string | 消息 ID |
+| `emoji_id` | string | 表情 ID |
+| `next` | string? | 分页令牌 |
+
+获取添加特定消息的特定表态的用户列表。返回一个 [`User`](./user.md#def-user) 的[分页列表](../protocol/api.md#list)。
+
+## 事件
+
+### reaction-added
+
+当表态被添加时触发。必需资源：[`emoji`](./emoji.md#def-emoji), [`message`](./message.md#def-message)。
+
+### reaction-removed
+
+当表态被移除时触发。必需资源：[`emoji`](./emoji.md#def-emoji), [`message`](./message.md#def-message)。
+
+---
+
+---
+url: /resources/emoji.md
+---
+# 表情 (Emoji) 实验性
+
+## 类型定义
+
+### Emoji {#def-emoji}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `id` | string | 表情 ID |
+| `name` | string? | 表情名称 |
+
+## 事件
+
+### guild-emoji-added
+
+当群组表情被添加时触发。必需资源：[`emoji`](#def-emoji)。
+
+### guild-emoji-updated
+
+当群组表情被更新时触发。必需资源：[`emoji`](#def-emoji)。
+
+### guild-emoji-deleted
+
+当群组表情被删除时触发。必需资源：[`emoji`](#def-emoji)。
+
+---
+
+---
+url: /advanced/passive.md
+---
+# 被动请求 实验性
+
+::: tip
+被动请求能力主要通过机器人提供，并由用户在聊天应用中触发。如果你要实现或接入的聊天平台不支持机器人相关功能，那么可以直接忽略本节。
+:::
+
+聊天机器人调用 API 进行的操作可以粗略分为两类：
+
+* **主动操作**：不依赖用户交互就能进行的操作，例如定时推送消息；
+* **被动操作**：以响应用户为目的而进行的操作，例如回答用户“@机器人”的问题。
+
+在协议侧，上述两种操作都使用统一的 [`/message.create`](../resources/message.md#api-message-create) 接口表达。然而，部分平台可能会区分上述两类操作，并对主动操作进行限制，例如：
+
+* 限制主动发送消息的速率；
+* 强制要求在回传消息时携带触发 API 调用的原始事件 ID (或其他上下文信息)；
+* 仅允许在特定时间窗口内对某次交互进行回应。
+
+在这种情况下，仅仅使用标准的发送消息接口就无法满足“被动请求”所需的参数要求。为此，Satori 提供了额外的 `referrer` 字段来解决问题。
+
+## `referrer` 字段
+
+::: tip
+注意：正确的拼写是 `referrer` 而不是 `referer`。
+:::
+
+当 SDK 推送事件时，可以额外携带一个 `event.referrer` 字段，用于承载平台进行被动请求所需的“来源上下文” (例如原始事件 ID、回调 token、thread 信息等)。
+
+应用侧在实现被动操作时，需要将来源事件的 `referrer` 原样作为 API 参数传入。这样一来，SDK 就可以明确知道此次请求属于被动操作，并利用 `referrer` 中的信息完成平台 API 调用。
+
+`referrer` 的内容由适配器决定，协议不对其结构做强约束。在实践上，建议仅仅下发有用的信息，避免 `referrer` 字段过于冗长。
+
+## 示例 (Lark)
+
+以 Lark 平台为例：在接收到消息时，官方适配器会下发以下 `referrer` 字段：
+
+```json{11-20}
+{
+  "sn": 0,
+  "type": "message-created",
+  "channel": {
+    "id": "xxxxxxxx"
+  },
+  "message": {
+    "id": "xxxxxxxx",
+    "content": "user message"
+  },
+  "referrer": {
+    // 这里的字段都是 Lark 平台内部定义的，与 Satori 协议无关
+    "type": "im.message.receive_v1",
+    "event": {
+      "message": {
+        "message_id": "xxxxxxxx",
+        "thread_id": "xxxxxxxx"
+      }
+    }
+  }
+}
+```
+
+应用在回复该消息 (即被动操作) 时，应当将该 `referrer` 作为参数传入 [`/message.create`](../resources/message.md#api-message-create)：
+
+```json{4-13}
+{
+  "channel_id": "xxxxxxxx",
+  "content": "reply to user message",
+  "referrer": {
+    // 这里的字段都是 Lark 平台内部定义的，与 Satori 协议无关
+    "type": "im.message.receive_v1",
+    "event": {
+      "message": {
+        "message_id": "xxxxxxxx",
+        "thread_id": "xxxxxxxx"
+      }
+    }
+  }
+}
+```
+
+---
+
+---
+url: /advanced/resource.md
+---
+# 资源链接 实验性
+
+::: warning
+这是一个实验性功能，可能在未来的版本中发生变化。
+:::
+
+## 文件上传 {#api-upload-create}
+
+> POST`/upload.create` {.route}
+
+如果要发送的消息中含有图片或其他媒体资源，可以使用此 API 将文件上传至 Satori 服务器并转换为 URL，以便在消息编码中使用。
+
+与其他 API 不同，上传文件的请求体遵循 [`multipart/form-data`](https://datatracker.ietf.org/doc/html/rfc7578#section-4) 格式。下面是一个示例：
+
+```text
+POST /v1/upload.create
+Content-Type: multipart/form-data
+Satori-Platform: discord
+Satori-User-ID: 1234567890
+
+--boundary
+Content-Disposition: form-data; name="foo"; filename="image1.png"
+Content-Type: image/png
+
+binary-data
+--boundary
+Content-Disposition: form-data; name="bar"; filename="image2.gif"
+Content-Type: image/gif
+
+binary-data
+--boundary--
+```
+
+其中，`Content-Disposition` 中的 `name` 字段表示文件标识符 (必需且不能重复)，`filename` 字段表示文件名 (可选)；`Content-Type` 表示文件类型 (必需)。
+
+返回值是一个字典类型，其中的每个键分别对应于请求体中的文件标识符，值是一个 URL 字符串，可以在消息编码中使用。下面是一个示例的返回值：
+
+```json
+{
+  "foo": "internal:discord/1234567890/_tmp/3j6emd92-image1.png",
+  "bar": "internal:discord/1234567890/_tmp/reacpmeq-image2.gif"
+}
+```
+
+在实现此 API 时，如果平台已经支持了文件上传功能，可以直接使用平台提供的上传 API，返回平台的 URL 即可。如果平台不支持文件上传功能，应当回退到 SDK 提供的默认实现。
+
+SDK 可以基于本地文件系统实现上传功能。上传到本地文件系统中的文件 URL 通过 `internal:` 协议进一步代理，且有一定的有效期。各实现可以根据自身情况调整有效期，推荐值为 5 分钟。
+
+## 内部链接 {#internal-url}
+
+`internal:` 称为内部链接协议，用于代理平台原生 API 或是无法直接通过公网访问的资源。
+
+### 格式规范 {#format}
+
+内部链接的标准格式如下：
+
+```text
+internal:{platform}/{user.id}/{path}
+```
+
+其中，`platform` 为平台名称，`user.id` 为登录账号，`path` 为资源路径。
+
+SDK 可以根据需要自行设计资源路径，但以下划线 `_` 开头的路径需要保留给 Satori 自身使用，拥有固定的语义。现有的保留路径有：
+
+* `_tmp`：用于 SDK 的默认文件上传实现；
+* `_api`：用于 API 桥接反射。
+
+### 适用场景 {#scenario}
+
+上一节中已经提到，在不支持文件上传的平台上调用 `/upload.create`，你将获得内部链接。对平台原生 API 的访问同样通过内部链接进行。除此以外，还有一些内部链接的适用场景。
+
+::: tip
+**场景：通过平台 API 请求资源**
+
+某些平台使用 ID 标识资源文件 (例如 Lark)。当你接收到来自平台的消息时，拿到的是资源 ID 而非链接。此时你需要调用平台 API，将资源 ID 转换为链接，才能构造合法的消息元素。
+
+为了避免在不必要的场合损失性能，更推荐的方式是直接将资源 ID 封装进内部链接，并立即构造消息元素。等到真正需要请求资源时再调用平台的 API。
+:::
+
+::: tip
+**场景：资源链接不宜直接公开**
+
+对于另一些平台，尽管其提供的资源链接是可用的，但这个链接中会明文包含机器人令牌，并非可以公开使用的链接 (例如 Telegram)。因此，对于这些平台中的资源，我们也不能直接使用其链接，同样需要将其封装进内部链接。此时内部链接就是单纯的代理。
+:::
+
+### 不同方案对比 {#comparison}
+
+与内部链接相比，另一些实践则是不推荐的。下面的方案来源于一些经典聊天协议的实现。通过与这些方案进行对比，可以更好地理解内部链接的优势。
+
+::: warning
+**不推荐：`data:` URL**
+
+一种不推荐的方案是直接下载资源，并转换为 `data:` 链接放入消息元素中。之所以不推荐使用，是因为这种方案有两大致命缺点：
+
+* 这些图片本来可以按需加载，但现在却被强制下载到本地，造成额外的带宽消耗；
+* 编码为 `data:` 会导致消息体积大幅增加，极大影响消息处理的性能。
+  :::
+
+::: warning
+**不推荐：本地代理**
+
+另一种方案是由 SDK 额外提供一个用于访问资源的路由 (比如下文介绍的代理路由)，并将资源链接转换为能访问到该路由的 URL。相比内部链接，这种方案有两个缺点：
+
+* 这样生成的链接与 Satori 服务器自身的地址耦合，一旦 Satori 服务器更换域名或者端口，过去的链接将全部失效，不利于迁移和跨接等复杂场景；
+* 如果需要扩展其他需要用到资源的逻辑 (比如下载图片到本地)，就会导致通过网络自己请求自己，而这些数据原本可以在内存或硬盘中传输，这显然引入了额外的性能损耗。
+  :::
+
+## 代理路由 {#proxy-route}
+
+假设你在开发基于 Satori 的聊天平台客户端，你希望可以直接将 Satori 协议中给出的资源链接用于 HTML，但很多情况下你都难以如愿：
+
+1. 该资源链接由平台生成，且含有防盗链机制，无法在跨域请求中访问；
+2. 该资源链接是一个内部链接，无法在 HTML 中直接访问。
+
+为此，SDK 需要额外提供一个代理路由 `/{version}/proxy/{url}`，用于访问这些资源链接。这个路由不需要 `Satori-Platform` 和 `Satori-User-ID` 请求头。
+
+下面是两个典型的代理路由请求示例 (分别对应上述两种情况)：
+
+```text
+GET /v1/proxy/https://cdn.discordapp.com/attachments/bf6f121d.jpg
+GET /v1/proxy/internal:discord/1234567890/_tmp/3j6emd92-image1.png
+```
+
+在具体的应用场景中，代理路由可根据需要添加 `Access-Control-Allow-Origin` 等响应头，以限制或允许跨域请求。
+
+为了辨别需要代理的路径以防滥用，Satori 还引入了 [`proxy_urls`](../protocol/events.md) 属性。这个属性记录了所有需要代理的 (非内部) 资源链接前缀，应用侧可以根据这个属性来判断是否需要代理。
+
+根据 `url` 的不同形式，SDK 提供的代理路由会有不同的行为：
+
+* 如果 `url` 不是合法的 URL，直接返回 400；
+* 如果 `url` 是一个内部链接 (即以 `internal:` 开头)：
+  * 如果链接不符合内部链接的格式，直接返回 400；
+  * 解析链接中的 `platform` 和 `user.id`，并找到对应的登录号；
+  * 如果登录号存在，则由该登录号的扩展逻辑进行返回；
+  * 如果登录号不存在，直接返回 404；
+* 如果 `url` 以某个 [`proxy_urls`](../protocol/events.md) 中的链接为前缀：
+  * 在 SDK 侧下载该 `url` 并返回 (SDK 提供了该资源的代理)；
+* 其他情况下：直接返回 403。
+
+## 实践指南 {#best-practice}
+
+综上所述，我们总结出了一套关于资源链接的最佳实践：
+
+对于核心库开发者，你需要：
+
+1. 提供 `REGISTER_INTERNAL_ROUTE` 方法用于注册内部链接路由，以便适配器实现；
+2. 提供 `DOWNLOAD_URL` 方法用于将一个链接下载为数据，无论其是否为内部链接；
+3. 基于本地文件系统实现内置的 `/upload.create` API；
+4. 基于上述 `DOWNLOAD_URL` 方法实现代理路由。
+
+对于适配器开发者，你需要：
+
+1. 平台符合内部链接的[适用场景](#scenario)，调用 `REGISTER_INTERNAL_ROUTE` 方法注册内部路由：
+2. 接收事件推送时：如果收到的资源链接符合内部链接的适用场景，将它们转化为内部链接；
+3. 发送消息时：根据平台行为和资源链接的形式，合理选择下载和发送资源的方式；
+4. 如果平台支持文件上传：实现 `/upload.create` API，覆盖 SDK 的默认实现。
+
+---
+
+---
+url: /advanced/internal.md
+---
+# 跨平台
+
+作为一个跨平台的聊天协议，Satori 提供了访问任意平台原生接口的能力。这意味着，你可以大多数情况下编写通用代码，并在需要的时候使用原生接口来实现平台特定功能。
+
+这些原生能力被统称为内部接口，涵盖了 API、事件、消息元素、路由等各个方面。
+
+## 平台与适配器 {#platform-vs-adapter}
+
+Satori 协议的大多数 API 都需要传入 `Satori-Platform` 和 `Satori-User-ID` 请求头，这是为了区分发起请求的登录号。不同平台的登录号拥有不同的 `login.platform`，而同一平台的不同登录号则拥有不同的 `login.user.id`，由此这套机制实现了安全的隔离。
+
+大多数聊天平台的 `platform` 字段都是直接由 SDK 设置的固定值。然而对于另一些允许自建的平台 (例如 Rocket Chat 和 Zulip)，SDK 则通常需要让部署者自行设置 `platform`，用来区分不同的服务器。如果直接混用的话，可能导致数据碰撞等问题。
+
+所以对于任何一个 Login，我们实际上存在两个不同的概念：
+
+* `login.platform`：聊天平台。通常来说，同一平台内的用户间具有相互发送消息的能力，而不同平台的用户间则没有。在 Satori 中，`platform` 也相当于一种命名空间，因此 SDK 需要保证同一平台内的 `user.id`, `guild.id` 等字段的唯一性。
+
+* `login.adapter`：适配器。适配器更多地是一个实现相关的概念，它决定了如何与平台进行通信。同一个适配器下通常会有相同的扩展 API、事件和消息元素。这个字段通常是 SDK 直接设置的，开发者可以用这个字段判断实现是否支持某些特性。
+
+::: tip
+如果你读到这里仍然难以区分 `platform` 和 `adapter`，可以记住以下规则：
+
+* 同一 `platform` 内 ID 相互兼容；
+* 同一 `adapter` 内 API 相互兼容；
+
+这两个条件是充分但不必要的，换言之，即便两个 Login 所拥有的 ID 或者 API 兼容，也可以不使用相同的 `platform` 或 `adapter`。这完全取决于 SDK 的实现和社区的约定。
+:::
+
+::: tip
+需要注意的是，这两个概念实际上是多对多的，我们可以举出一些特殊场景：
+
+* **单适配器多平台**：某平台允许用户自建服务器，此时两台独立的自建服务器拥有不同的数据，所有的 `user.id`, `guild.id` 等属于不同的命名空间，因此 `platform` 字段应该是不同的。但这两台服务器使用的通信方式相同，因此 `adapter` 字段应该是相同的。
+* **单平台多适配器**：某平台同时有官方和非官方的 SDK，两套 SDK 使用的通信方式不同，因此 `adapter` 字段应该是不同的。但这两套 SDK 都是为了与同一平台通信，所有的 `user.id`, `guild.id` 等属于同一个命名空间，因此 `platform` 字段应该是相同的。
+  :::
+
+## API 扩展 {#api}
+
+SDK 可以通过 `/{version}/internal/{method}` 路由代理平台原生 API。
+
+例如，Discord 平台提供了 Restful API，那么你可以进行如下请求：
+
+```text
+DELETE /v1/internal/channels/111222333
+Satori-Platform: discord
+Satori-User-ID: 1234567890
+```
+
+除了作为前缀的路由和额外的 `Satori-Platform` 和 `Satori-User-ID` 请求头之外，整个请求和响应的格式都与平台原生 API 一致。
+
+## 事件扩展 {#events}
+
+### 平台原生事件
+
+SDK 可以通过 `internal` 事件的 `_type` 和 `_data` 属性代理平台原生事件。它的结构如下：
+
+| 字段 | 类型 | 说明 |
+| --- | --- | --- |
+| `sn` | number | 事件序列号 |
+| `type` | string | 事件类型 (固定为 `internal`) |
+| `login` | [Login](../resources/login.md) | 登录信息 |
+| `_type` | string | 原生事件类型 |
+| `_data` | object | 原生事件数据 |
+
+### 标准事件的扩展字段
+
+标准事件的平台原生字段也可以通过上述 `_type` 和 `_data` 访问。它的结构如下：
+
+| 字段 | 类型 | 说明 |
+| --- | --- | --- |
+| `type` | string | 事件类型 (不应该是 `internal`) |
+| `_type` | string | 平台通用名称 |
+| `_data` | object | 原生事件数据 |
+| 其他字段 |  | 其他标准事件字段 |
+
+::: tip
+有些平台原生事件可以直接对应到标准事件。当这些事件触发时，SDK 可以同时触发标准事件和平台原生事件。这两个事件都带有 `_type` 和 `_data` 字段，但这两个字段的值可能是不同的。
+:::
+
+## 消息元素扩展 {#elements}
+
+### 平台原生消息元素
+
+平台可以提供原生消息元素，但需要加上适配器名称作为前缀。下面是一个例子：
+
+```html
+<kook:card size="lg">
+  <kook:countdown end-time="1608819168000"/>
+</kook:card>
+```
+
+### 标准元素的扩展属性
+
+标准元素的平台原生属性也可以通过加上适配器名称作为前缀的方式声明。下面是一个例子：
+
+```html
+<!-- src 是 audio 元素的标准属性。 -->
+<!-- 但 cover 并未标准化，所以需要加前缀。 -->
+<audio src="url1" kook:cover="url2"/>
+```
+
+::: tip
+平台原生消息元素的属性是否需要前缀由 SDK 实现自行决定。如果某个消息元素希望在未来标准化，那么加上前缀可以降低迁移成本。如果没有标准化需要，那么去掉前缀在书写上更方便。
+:::
+
+---
+
+---
+url: /sdk/adapter.md
+---
+# 适配器 (Adapter)
+
+**适配器 (Adapter)** 负责将特定聊天平台的通信方式转换为 Satori 协议。如果你并不打算编写一个平台实现，你完全可以跳过本章节。
+
+标有 抽象 的方法需要由适配器插件自行实现。
+
+## 类：Adapter
+
+适配器基类。
+
+### new Adapter(ctx)
+
+* **ctx:** `Context` 上下文实例
+
+构造一个适配器实例。
+
+### adapter.bots
+
+* 类型: `Bot[]`
+
+当前适配器下的全部机器人实例。
+
+### adapter.connect(bot) 抽象
+
+* **bot:** [`Bot`](./bot.md) 机器人实例
+* 返回值: `Promise<void>`
+
+连接 Bot 所需的操作，将在 `bot.start()` 中被调用。
+
+### adapter.disconnect(bot) 抽象
+
+* **bot:** [`Bot`](./bot.md) 机器人实例
+* 返回值: `Promise<void>`
+
+断开 Bot 连接所需的操作，将在 `bot.stop()` 中被调用。
+
+### adapter.fork(ctx, bot)
+
+* **ctx:** `Context` 上下文实例
+* **bot:** [`Bot`](./bot.md) 机器人实例
+
+将 Bot 注册到适配器中。设置 `bot.adapter` 并将 Bot 添加到 `adapter.bots` 数组。当上下文被释放时，Bot 将自动从数组中移除。
+
+## 类：Adapter.WsClient
+
+一个用于 WebSocket 通信方式的实用适配器基类。继承自 `Adapter`。
+
+### new WsClient(ctx, bot)
+
+* **ctx:** `Context` 上下文实例
+* **bot:** [`Bot`](./bot.md) 机器人实例
+
+创建一个 WsClient 适配器实例。自动将 `bot.adapter` 设置为自身。
+
+### 配置项
+
+WsClient 中的机器人需要接受以下配置项：
+
+```ts
+interface WsClientConfig {
+  /** 初次连接时的最大重试次数 (默认为 6) */
+  retryTimes?: number
+  /** 初次连接时的重试时间间隔，单位为毫秒 (默认为 5000) */
+  retryInterval?: number
+  /** 连接关闭后的重试时间间隔，单位为毫秒 (默认为 60000) */
+  retryLazy?: number
+}
+```
+
+### client.bot
+
+* 类型: [`Bot`](./bot.md)
+
+当前适配器下的机器人实例。
+
+### client.prepare() 抽象
+
+* 返回值: `WebSocket | Promise<WebSocket>`
+
+根据机器人实例生成一个 WebSocket 对象。
+
+### client.accept(socket) 抽象
+
+* **socket:** `WebSocket` WebSocket 实例
+
+WebSocket 连接成功建立后的回调函数。你需要在实现中通过 `bot.online()` 标记机器人上线。
+
+---
+
+---
+url: /resources/channel.md
+---
+# 频道 (Channel)
+
+## 类型定义
+
+### Channel {#def-channel}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `id` | string | 频道 ID |
+| `type` | [ChannelType](#def-channel-type) | 频道类型 |
+| `name` | string? | 频道名称 |
+| `parent_id` | string? | 父频道 ID |
+
+### ChannelType {#def-channel-type}
+
+| 名称 | 值 | 描述 |
+| --- | --- | --- |
+| `TEXT` | 0 | 文本频道 |
+| `DIRECT` | 1 | 私聊频道 |
+| `CATEGORY` | 2 | 分类频道 |
+| `VOICE` | 3 | 语音频道 |
+
+## API
+
+### 获取群组频道 {#api-channel-get}
+
+> POST `/channel.get` {.route}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `channel_id` | string | 频道 ID |
+
+根据 ID 获取频道。返回一个 [Channel](#def-channel) 对象。
+
+### 获取群组频道列表 {#api-channel-list}
+
+> POST `/channel.list` {.route}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `guild_id` | string | 群组 ID |
+| `next` | string? | 分页令牌 |
+
+获取群组中的全部频道。返回一个 [Channel](#def-channel) 的[分页列表](../protocol/api.md#list)。
+
+### 创建群组频道 {#api-channel-create}
+
+> POST `/channel.create` {.route}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `guild_id` | string | 群组 ID |
+| `data` | [Channel](#channel) | 频道数据 |
+
+创建群组频道。返回一个 [Channel](#def-channel) 对象。
+
+### 修改群组频道 {#api-channel-update}
+
+> POST `/channel.update` {.route}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `channel_id` | string | 频道 ID |
+| `data` | [Channel](#def-channel) | 频道数据 |
+
+修改群组频道。
+
+### 删除群组频道 {#api-channel-delete}
+
+> POST `/channel.delete` {.route}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `channel_id` | string | 频道 ID |
+
+删除群组频道。
+
+### 禁言群组频道 实验性 {#api-channel-mute}
+
+> POST `/channel.mute` {.route}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `channel_id` | string | 频道 ID |
+| `duration` | number | 禁言时长 (毫秒) |
+
+禁言群组频道。如果传入的禁言时长为 `0` 则表示解除禁言。
+
+### 创建私聊频道 {#api-user-channel-create}
+
+> POST `/user.channel.create` {.route}
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| `user_id` | string | 用户 ID |
+| `guild_id` | string? | 群组 ID |
+
+创建一个私聊频道。返回一个 [Channel](#def-channel) 对象。
+
+## 事件
+
+### channel-added
+
+频道被创建或变得对 SDK 可见时触发。必需资源：[`guild`](./guild.md#def-guild)，[`channel`](#def-channel)。
+
+### channel-updated
+
+频道信息更新时触发。必需资源：[`guild`](./guild.md#def-guild)，[`channel`](#def-channel)。
+
+### channel-removed
+
+频道被删除或变得对 SDK 不可见时触发。必需资源：[`guild`](./guild.md#def-guild)，[`channel`](#def-channel)。
