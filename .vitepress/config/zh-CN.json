@@ -1,9 +1,66 @@
 {
   "themeConfig": {
     "nav": [
-      { "text": "协议", "link": "/protocol/", "activeMatch": "^/(protocol|resources)/" }
+      { "text": "协议", "link": "/protocol/", "activeMatch": "^/(protocol|resources)/" },
+      { "text": "SDK", "link": "/sdk/", "activeMatch": "^/(sdk|adapters)/" }
     ],
     "sidebar": {
+      "/sdk": [{
+        "text": "SDK",
+        "items": [
+          { "text": "总览", "link": "/sdk/index.md" },
+          { "text": "机器人 (Bot)", "link": "/sdk/bot.md" },
+          { "text": "适配器 (Adapter)", "link": "/sdk/adapter.md" },
+          { "text": "会话 (Session)", "link": "/sdk/session.md" }
+        ]
+      }, {
+        "text": "适配器",
+        "items": [
+          { "text": "钉钉", "link": "/adapters/dingtalk.md" },
+          { "text": "Discord", "link": "/adapters/discord.md" },
+          { "text": "KOOK", "link": "/adapters/kook.md" },
+          { "text": "飞书", "link": "/adapters/lark.md" },
+          { "text": "LINE", "link": "/adapters/line.md" },
+          { "text": "Mail", "link": "/adapters/mail.md" },
+          { "text": "Matrix", "link": "/adapters/matrix.md" },
+          { "text": "QQ", "link": "/adapters/qq.md" },
+          { "text": "Satori", "link": "/adapters/satori.md" },
+          { "text": "Slack", "link": "/adapters/slack.md" },
+          { "text": "Telegram", "link": "/adapters/telegram.md" },
+          { "text": "微信公众号", "link": "/adapters/wechat-official.md" },
+          { "text": "企业微信", "link": "/adapters/wecom.md" },
+          { "text": "WhatsApp", "link": "/adapters/whatsapp.md" },
+          { "text": "Zulip", "link": "/adapters/zulip.md" }
+        ]
+      }],
+      "/adapters": [{
+        "text": "SDK",
+        "items": [
+          { "text": "总览", "link": "/sdk/index.md" },
+          { "text": "机器人 (Bot)", "link": "/sdk/bot.md" },
+          { "text": "适配器 (Adapter)", "link": "/sdk/adapter.md" },
+          { "text": "会话 (Session)", "link": "/sdk/session.md" }
+        ]
+      }, {
+        "text": "适配器",
+        "items": [
+          { "text": "钉钉", "link": "/adapters/dingtalk.md" },
+          { "text": "Discord", "link": "/adapters/discord.md" },
+          { "text": "KOOK", "link": "/adapters/kook.md" },
+          { "text": "飞书", "link": "/adapters/lark.md" },
+          { "text": "LINE", "link": "/adapters/line.md" },
+          { "text": "Mail", "link": "/adapters/mail.md" },
+          { "text": "Matrix", "link": "/adapters/matrix.md" },
+          { "text": "QQ", "link": "/adapters/qq.md" },
+          { "text": "Satori", "link": "/adapters/satori.md" },
+          { "text": "Slack", "link": "/adapters/slack.md" },
+          { "text": "Telegram", "link": "/adapters/telegram.md" },
+          { "text": "微信公众号", "link": "/adapters/wechat-official.md" },
+          { "text": "企业微信", "link": "/adapters/wecom.md" },
+          { "text": "WhatsApp", "link": "/adapters/whatsapp.md" },
+          { "text": "Zulip", "link": "/adapters/zulip.md" }
+        ]
+      }],
       "/": [{
         "text": "介绍",
         "link": "/introduction.md"

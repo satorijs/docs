@@ -1,9 +1,66 @@
 {
   "themeConfig": {
     "nav": [
-      { "text": "Protocol", "link": "/protocol/", "activeMatch": "^/(protocol|resources)/" }
+      { "text": "Protocol", "link": "/protocol/", "activeMatch": "^/(protocol|resources)/" },
+      { "text": "SDK", "link": "/sdk/", "activeMatch": "^/(sdk|adapters)/" }
     ],
     "sidebar": {
+      "/sdk": [{
+        "text": "SDK",
+        "items": [
+          { "text": "Overview", "link": "/sdk/index.md" },
+          { "text": "Bot", "link": "/sdk/bot.md" },
+          { "text": "Adapter", "link": "/sdk/adapter.md" },
+          { "text": "Session", "link": "/sdk/session.md" }
+        ]
+      }, {
+        "text": "Adapters",
+        "items": [
+          { "text": "DingTalk", "link": "/adapters/dingtalk.md" },
+          { "text": "Discord", "link": "/adapters/discord.md" },
+          { "text": "KOOK", "link": "/adapters/kook.md" },
+          { "text": "Lark", "link": "/adapters/lark.md" },
+          { "text": "LINE", "link": "/adapters/line.md" },
+          { "text": "Mail", "link": "/adapters/mail.md" },
+          { "text": "Matrix", "link": "/adapters/matrix.md" },
+          { "text": "QQ", "link": "/adapters/qq.md" },
+          { "text": "Satori", "link": "/adapters/satori.md" },
+          { "text": "Slack", "link": "/adapters/slack.md" },
+          { "text": "Telegram", "link": "/adapters/telegram.md" },
+          { "text": "WeChat Official", "link": "/adapters/wechat-official.md" },
+          { "text": "WeCom", "link": "/adapters/wecom.md" },
+          { "text": "WhatsApp", "link": "/adapters/whatsapp.md" },
+          { "text": "Zulip", "link": "/adapters/zulip.md" }
+        ]
+      }],
+      "/adapters": [{
+        "text": "SDK",
+        "items": [
+          { "text": "Overview", "link": "/sdk/index.md" },
+          { "text": "Bot", "link": "/sdk/bot.md" },
+          { "text": "Adapter", "link": "/sdk/adapter.md" },
+          { "text": "Session", "link": "/sdk/session.md" }
+        ]
+      }, {
+        "text": "Adapters",
+        "items": [
+          { "text": "DingTalk", "link": "/adapters/dingtalk.md" },
+          { "text": "Discord", "link": "/adapters/discord.md" },
+          { "text": "KOOK", "link": "/adapters/kook.md" },
+          { "text": "Lark", "link": "/adapters/lark.md" },
+          { "text": "LINE", "link": "/adapters/line.md" },
+          { "text": "Mail", "link": "/adapters/mail.md" },
+          { "text": "Matrix", "link": "/adapters/matrix.md" },
+          { "text": "QQ", "link": "/adapters/qq.md" },
+          { "text": "Satori", "link": "/adapters/satori.md" },
+          { "text": "Slack", "link": "/adapters/slack.md" },
+          { "text": "Telegram", "link": "/adapters/telegram.md" },
+          { "text": "WeChat Official", "link": "/adapters/wechat-official.md" },
+          { "text": "WeCom", "link": "/adapters/wecom.md" },
+          { "text": "WhatsApp", "link": "/adapters/whatsapp.md" },
+          { "text": "Zulip", "link": "/adapters/zulip.md" }
+        ]
+      }],
       "/": [{
         "text": "Introduction",
         "link": "/introduction.md"
